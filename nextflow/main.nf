@@ -2,7 +2,7 @@ def meta = create_meta()
 def ch_bed = file(params.bed)
 def ch_input = [meta, file(params.bam), file(params.bai)]
 
-include { FILTER_BAM         } from 'modules/filter_bam'
+include { FILTER_BAM } from 'modules/filter_bam'
 
 workflow NGS4THAL {
     FILTER_BAM(
