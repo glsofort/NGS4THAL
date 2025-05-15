@@ -8,6 +8,7 @@ nextflow run main.nf \
 -c nextflow.config \
 -profile docker \
 --sample_id 1 \
+--bed assets/Thalassaemia_hg19_genome.bed \
 --bam samples/3744.bam \
 --bai samples/3744.bam.bai \
 --genome GRCh37 \
