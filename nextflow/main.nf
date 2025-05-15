@@ -1,6 +1,6 @@
 def meta = create_meta()
-def ch_bam = Channel.fromPath(params.bam, checkIfExists: true)
-def ch_bai = Channel.fromPath(params.bai, checkIfExists: true)
+def ch_bam = file(params.bam)
+def ch_bai = file(params.bai)
 def ch_bed = file(params.bed)
 def ch_input = [meta, ch_bam, ch_bai]
 
