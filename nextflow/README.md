@@ -7,10 +7,10 @@ rm -rf outdir && \
 nextflow run main.nf \
 -c nextflow.config \
 -profile docker \
---sample_id 1 \
+--sample_id 3187 \
 --bed assets/Thalassaemia_hg19_genome.bed \
---bam samples/3744.deduped.bam \
---bai samples/3744.deduped.bam.bai \
+--bam samples/3187.deduped.bam \
+--bai samples/3187.deduped.bam.bai \
 --genome GRCh37 \
 --database ${database} \
 --docker_registry namxle \

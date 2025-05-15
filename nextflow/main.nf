@@ -4,7 +4,7 @@ def ch_bai = Channel.fromPath(params.bai, checkIfExists: true)
 def ch_bed = file(params.bed)
 def ch_input = [meta, ch_bam, ch_bai]
 
-include { FILTER_BAM } from 'modules/filter_bam'
+include { FILTER_BAM } from './modules/filter_bam'
 
 workflow NGS4THAL {
     FILTER_BAM(
