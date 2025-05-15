@@ -1,7 +1,7 @@
 process FILTER_BAM {
     input:
     tuple val(meta), path(in_bam), path(in_bai)
-    bed
+    path(bed)
 
     output:
     tuple val(meta), path(out_bam), path(out_bai)
