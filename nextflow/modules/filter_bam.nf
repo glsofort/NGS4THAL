@@ -1,4 +1,6 @@
 process FILTER_BAM {
+    label 'process_medium'
+
     input:
     tuple val(meta), path(in_bam), path(in_bai)
     path(bed)
@@ -8,12 +10,13 @@ process FILTER_BAM {
 
     script:
     def prefix = task.ext.prefix ?: "${meta.id}"
+    def threads = task.cpus
 
     out_bam = "${prefix}.bam"
     out_bai = "${prefix}.bam.bai"
 
     """
-    samtools view -h -L ${bed} -b -o ${out_bam} ${in_bam}
-    samtools index ${out_bam}
+    samtools view -@ ${threads} -h -L ${bed} -b -o ${out_bam} ${in_bam}
+    samtools index -@ ${threads} ${out_bam}
     """
 }
