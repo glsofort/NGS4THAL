@@ -9,8 +9,8 @@ nextflow run main.nf \
 -profile docker \
 --sample_id 1 \
 --bed assets/Thalassaemia_hg19_genome.bed \
---bam samples/3744.bam \
---bai samples/3744.bam.bai \
+--bam samples/3744.deduped.bam \
+--bai samples/3744.deduped.bam.bai \
 --genome GRCh37 \
 --database ${database} \
 --docker_registry namxle \
