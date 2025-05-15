@@ -11,7 +11,10 @@ workflow NGS4THAL {
         ch_input,
         ch_bed
     )
+}
 
+workflow {
+    NGS4THAL()
 }
 
 def create_meta () {
