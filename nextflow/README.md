@@ -8,6 +8,8 @@ nextflow run main.nf \
 -c nextflow.config \
 -profile docker \
 --sample_id 1 \
+--bam 3744.bam \
+--bai 3744.bam.bai \
 --genome GRCh37 \
 --database ${database} \
 --docker_registry namxle \
