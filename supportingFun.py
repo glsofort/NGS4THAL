@@ -4,7 +4,7 @@ import os
 def load_config_file(config_name):
     """ load config values from config file"""
     #
-    config_var = ['rescue_folder', 'Raw_Bam_file_folder', 'BWA_path', 'samtools_path', 'picard_path', 'GATK_path', 'GATK_bundle_path', 'vcftools_path', 'bcltools_paths',
+    config_var = ['rescue_folder', 'Raw_Bam_file_folder', 'BWA_path', 'samtools_path', 'picard_path', 'GATK_path', 'GATK_bundle_path', 'vcftools_path', 'bcftools_path',
                   'ANNO_path', 'queue', 'walltime', 'nodes', 'ppn', 'mem', 'Email', 'PBSfile1', 'PBSfile2', 'PBSfile3', 'PBSfile4', 'PBSfile5']
 
     config_dict = {}
@@ -34,12 +34,7 @@ def Create_Folders(OuterSide, InnerListNames):
             subfolder = OuterSide + '/' + i
             os.mkdir(subfolder)
     except OSError:
-        print """
-        |---------------------------------------|
-        | Please delete all the newly created   |
-        | folders and re-run the program again !|
-        |---------------------------------------|
-        """
+        print("Please delete all the newly created")
     return 1
 
 
