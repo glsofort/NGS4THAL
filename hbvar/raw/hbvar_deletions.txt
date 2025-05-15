@@ -1,0 +1,266 @@
+#chrom	chromStart	chromEnd	HbVar.ID	commonName	HGVSname	mutationType
+#coordinates using UCSC numbering system (chromStart zero based)
+chr11	5270962	5270965	HbVar.643	Hb F-Mauritius	HBG1:c.70_72delGCT	deletions
+chr11	5246845	5246848	HbVar.695	Hb Atlanta-Coventry	HBB:c.[227T>C;424_426delCTG]	substitution,deletions
+chr11	5247894	5247895	HbVar.695	Hb Atlanta-Coventry	HBB:c.[227T>C;424_426delCTG]	substitution,deletions
+chr16	223589	223590	HbVar.702	Hb Wayne	HBA2:c.420delA (or HBA1)	deletions
+chr16	227400	227401	HbVar.702	Hb Wayne	HBA2:c.420delA (or HBA1)	deletions
+chr11	5246840	5246841	HbVar.708	Hb Saverne	HBB:c.431delA	deletions
+chr16	222929	222932	HbVar.715	Hb Boyle Heights	HBA1:c.19_21delGAC (or HBA2)	deletions
+chr16	226733	226736	HbVar.715	Hb Boyle Heights	HBA1:c.19_21delGAC (or HBA2)	deletions
+chr16	226949	226952	HbVar.716	Hb Taybe	HBA1:c.118_120delACC	deletions
+chr16	226988	227012	HbVar.717	Hb J-Biskra	HBA1:c.157_180del	deletions
+chr16	223253	223256	HbVar.718	Hb Watts	HBA2:c.226_228delGAC	deletions
+chr11	5248227	5248230	HbVar.720	Hb Leiden	HBB:c.22_24delGAG	deletions
+chr11	5248194	5248200	HbVar.721	Hb Lyon	HBB:c.52_57delAAGGTG	deletions
+chr11	5248179	5248182	HbVar.722	Hb Freiburg	HBB:c.70_72delGTT	deletions
+chr11	5248173	5248176	HbVar.723	Hb Higashitochigi (Hb HT)	HBB:c.76_78delGGT	deletions
+chr11	5247992	5247995	HbVar.724	Hb Bruxelles	HBB:c.[124_126delTTC or 127_129delTTT]	deletions
+chr11	5247995	5247998	HbVar.724	Hb Bruxelles	HBB:c.[124_126delTTC or 127_129delTTT]	deletions
+chr11	5247983	5247992	HbVar.725	Hb Niteroi	HBB:c.130_138delGAGTCCTTT	deletions
+chr11	5247941	5247953	HbVar.726	Hb Tochigi	HBB:c.169_180delGGCAACCCTAAG	deletions
+chr11	5247893	5247899	HbVar.727	Hb Saint-Antoine	HBB:c.223_228delGGCCTG	deletions
+chr11	5247893	5247896	HbVar.728	Hb Vicksburg	HBB:c.226_228delCTG	deletions
+chr11	5247857	5247860	HbVar.729	Hb Tours	HBB:c.262_264delACA	deletions
+chr11	5247833	5247848	HbVar.730	Hb Gun Hill	HBB:c.274_288delCTGCACTGTGACAAG	deletions
+chr11	5246845	5246848	HbVar.731	Hb Coventry	HBB:c.424_426delCTG	deletions
+chr11	5247892	5247903	HbVar.738	Hb Montreal	HBB:c.220_228delinsAlaArgCysGln	insertions,deletions
+chr11	5247893	5247902	HbVar.738	Hb Montreal	HBB:c.220_228delinsAlaArgCysGln	insertions,deletions
+chr11	5247826	5247829	HbVar.739	Hb Galicia	HBB:c.293_295delACG	deletions
+chr11	5246853	5246854	HbVar.740	Hb Nijkerk	HBB:c.[418A>T;415_417delGCT]	substitution,deletions
+chr11	5246854	5246857	HbVar.740	Hb Nijkerk	HBB:c.[418A>T;415_417delGCT]	substitution,deletions
+chr11	5246838	5246847	HbVar.741	Hb Birmingham	HBB:c.425_433delTGGCCCACA	deletions
+chr11	5254223	5254226	HbVar.749	Hb Lincoln Park	HBD:c.412_414delGTG	deletions
+chr11	5248291	5248292	HbVar.771	5'UTR; +10 (-T) beta+ (silent)	HBB:c.-41delT	deletions
+chr11	5248258	5248262	HbVar.774	5'UTR; +43 to +40 (-AAAC) beta+	HBB:c.-11_-8delAAAC	deletions
+chr11	5248247	5248248	HbVar.781	Codon 1 (-G); GTG(Val)->-TG beta0	HBB:c.4delG	deletions
+chr11	5248235	5248246	HbVar.782	Codons 2/3/4 (-9 bp; +31 bp); beta0	HBB:c.7_15delinsCCTGAGGTGAAGTCTGCCTGAGGAGAAGTCT	insertions,deletions
+chr11	5248236	5248245	HbVar.782	Codons 2/3/4 (-9 bp; +31 bp); beta0	HBB:c.7_15delinsCCTGAGGTGAAGTCTGCCTGAGGAGAAGTCT	insertions,deletions
+chr11	5248233	5248235	HbVar.783	Codon 5 (-CT); CCT(Pro)->C-- beta0	HBB:c.17_18delCT	deletions
+chr11	5248231	5248232	HbVar.784	Codon 6 (-A); GAG(Glu)->G-G beta0	HBB:c.20delA	deletions
+chr11	5248225	5248227	HbVar.785	Codon 8 (-AA); AAG(Lys)->--G beta0	HBB:c.25_26delAA	deletions
+chr11	5248215	5248216	HbVar.789	Codon 11 (-T); GTT(Val)->GT- beta0	HBB:c.36delT	deletions
+chr11	5248205	5248206	HbVar.798	Codon 15 (-T); TGG(Trp)->-GG beta0	HBB:c.46delT	deletions
+chr11	5248200	5248201	HbVar.799	Codon 16 (-C); GGC(Gly)->GG- beta0	HBB:c.51delC	deletions
+chr11	5248177	5248184	HbVar.803	Codons 22/23/24 (GAA GTT GGT; Glu Val Gly); deletion of -AAGTTGG beta0	HBB:c.68_74delAAGTTGG	deletions
+chr11	5248176	5248180	HbVar.804	Codon 24; GGT(Gly); (-G; +CAC) beta0	HBB:c.74delinsCAC	insertions,deletions
+chr11	5248177	5248178	HbVar.804	Codon 24; GGT(Gly); (-G; +CAC) beta0	HBB:c.74delinsCAC	insertions,deletions
+chr11	5248166	5248167	HbVar.811	Codon 28 (-C); CTG(Leu)->-TG beta0	HBB:c.85delC	deletions
+chr11	5248162	5248163	HbVar.813	Codons 28/29 (-G); CTG GGC(Leu Gly)->CTG -GC beta0	HBB:c.89delG	deletions
+chr11	5248029	5248046	HbVar.834	IVS-I, 3' end; -17 bp beta0	HBB:c.93-17_93-1delTATTTTCCCACCCTTAG	deletions
+chr11	5248027	5248028	HbVar.835	Codon 31 (-C); CTG->-TG beta0	HBB:c.94delC	deletions
+chr11	5248019	5248022	HbVar.837	Codons 33/34 (-GTG); GTG GTC(Val*Val)->GTC - - -(Val) beta0	HBB:c.100_102delGTG	deletions
+chr11	5248011	5248012	HbVar.839	Codon 35 (-C); TAC(Tyr)->TA- beta0	HBB:c.110delC	deletions
+chr11	5248009	5248010	HbVar.840	Codons 36/37 (-T); CCT TGG(Pro-Trp)->CCT -GG beta0	HBB:c.112delT	deletions
+chr11	5248001	5248008	HbVar.842	Codons 37/38/39 (-7 nts) beta0	HBB:c.114_120delGACCCAG	deletions
+chr11	5248003	5248004	HbVar.843	Codons 38/39 (-C); ACC CAG(Thr Gln)->ACC -AG beta0	HBB:c.118delC	deletions
+chr11	5248003	5248005	HbVar.844	Codons 38/39 (-CC); ACC CAG(Thr-Glu)->A- - CAG beta0	HBB:c.117_118delCC	deletions
+chr11	5247998	5247999	HbVar.846	Codon 40 (-G); AGG(Arg)->AG- beta0	HBB:c.123delG	deletions
+chr11	5247995	5247996	HbVar.848	Codon 41 (-C); TTC(Phe)->TT- beta0	HBB:c.126delC	deletions
+chr11	5247992	5247996	HbVar.849	Codons 41/42 (-TTCT); TTCTTT(Phe-Phe)->- - - -TT beta0	HBB:c.126_129delCTTT	deletions
+chr11	5247986	5247987	HbVar.854	Codon 44 (-C); TCC(Ser)->TC- beta0	HBB:c.135delC	deletions
+chr11	5247983	5247984	HbVar.855	Codon 45 (-T); TTT(Phe)->-TT beta0	HBB:c.138delT	deletions
+chr11	5247966	5247967	HbVar.858	Codon 51 (-C); CCT(Pro)->-CT beta0	HBB:c.155delC	deletions
+chr11	5247956	5247957	HbVar.861	Codon 54 (-T); GTT(Val)->GT- beta0	HBB:c.165delT	deletions
+chr11	5247942	5247943	HbVar.865	Codon 59 (-A); AAG(Lys)->-AG beta0	HBB:c.179delA	deletions
+chr11	5247927	5247928	HbVar.867	Codon 64 (-G); GGC(Gly)->-GC beta0	HBB:c.194delG	deletions
+chr11	5247917	5247919	HbVar.868	Codon 67 (-TG); GTG(Val)->--G beta0	HBB:c.203_204delTG	deletions
+chr11	5247899	5247906	HbVar.871	Codons 72/73; -AGTGA, +T; AGT GAT(Ser-Asp)->---- TT beta0	HBB:c.217_221delinsT	insertions,deletions
+chr11	5247900	5247905	HbVar.871	Codons 72/73; -AGTGA, +T; AGT GAT(Ser-Asp)->---- TT beta0	HBB:c.217_221delinsT	insertions,deletions
+chr11	5247895	5247896	HbVar.873	Codons 74/75 (-C); GGC CTG(Gly Leu)->GG- CTG beta0	HBB:c.226delC	deletions
+chr11	5247891	5247892	HbVar.874	Codon 76 (-C); GCT(Ala)->G-T beta0	HBB:c.230delC	deletions
+chr11	5247870	5247871	HbVar.875	Codons 82/83 (-G); AAG GGC(Lys Gly)->AAG -GC beta0	HBB:c.251delG	deletions
+chr11	5247850	5247852	HbVar.879	Codons 89/90 (-GT); AGT GAG(Ser Glu)->A-- GAG beta0	HBB:c.270_271delTG	deletions
+chr11	5247817	5247822	HbVar.883	Codon 100; -CTT, +TCTGAGAACTT beta0 (dominant type)	HBB:c.301_303delinsTCTGAGAACTT	insertions,deletions
+chr11	5247818	5247821	HbVar.883	Codon 100; -CTT, +TCTGAGAACTT beta0 (dominant type)	HBB:c.301_303delinsTCTGAGAACTT	insertions,deletions
+chr11	5247802	5247806	HbVar.886	IVS-II-2,3 (+11, -2); beta0	HBB:c.315+2_315+3delinsACGTTCTCTGA	insertions,deletions
+chr11	5247803	5247805	HbVar.886	IVS-II-2,3 (+11, -2); beta0	HBB:c.315+2_315+3delinsACGTTCTCTGA	insertions,deletions
+chr11	5247801	5247803	HbVar.887	IVS-II-4,5 (-AG); beta (0 or + unclear)	HBB:c.315+4_315+5delAG	deletions
+chr16	226943	226946	HbVar.905	Hb Heraklion	HBA1:c.112_114delCCC	deletions
+chr16	227018	227021	HbVar.906	Hb Aghia Sophia	HBA1:c.187_189delGTG	deletions
+chr11	5248015	5248021	HbVar.907	Hb Dresden	HBB:c.101_106delTGGTCT	deletions
+chr16	227015	227018	HbVar.936	Hb Clinic	HBA1:c.184_186delAAG	deletions
+chr16	223508	223509	HbVar.937	Hb Lleida	HBA2:c.[339C>G;340_351delCTCCCCGCCGAG]	substitution,deletions
+chr16	223509	223521	HbVar.937	Hb Lleida	HBA2:c.[339C>G;340_351delCTCCCCGCCGAG]	substitution,deletions
+chr11	5246956	5246957	HbVar.941	IVS-II-850 (-G); beta0	HBB:c.316-1delG	deletions
+chr11	5246934	5246946	HbVar.946	Codons 108/109/110/111/112 (-12 bp); beta0	HBB:c.326_337delACGTGCTGGTCT	deletions
+chr11	5246943	5246944	HbVar.947	Hb Manhattan	HBB:c.328delG	deletions
+chr11	5246926	5246930	HbVar.949	Hb Geneva	HBB:c.343_344delinsG	insertions,deletions
+chr11	5246927	5246929	HbVar.949	Hb Geneva	HBB:c.343_344delinsG	insertions,deletions
+chr11	5246901	5246902	HbVar.952	Hb Makabe	HBB:c.370delA	deletions
+chr11	5246893	5246902	HbVar.953	Codons 123/124/125 (-ACCCCACC); Dominant inclusion body beta-thal trait	HBB:c.370_378delACCCCACCA	deletions
+chr11	5246896	5246897	HbVar.954	Codon 124 (-A); CCA(Pro)->CC- Dominant, inclusion body beta-thal trait	HBB:c.375delA	deletions
+chr11	5246893	5246894	HbVar.955	Codon 125 (-A); CCA(Pro)->CC- Dominant inclusion body beta-thal trait	HBB:c.378delA	deletions
+chr11	5246891	5246892	HbVar.957	Hb Vercelli	HBB:c.380delT	deletions
+chr11	5246875	5246892	HbVar.958	Codons 126-131 (Val-Gln-Ala-Ala-Thr-Gln) (-17 bp); GTG CAG GCT GCC TAT CAG->G beta0	HBB:c.380_396delTGCAGGCTGCCTATCAG	deletions
+chr11	5246886	5246889	HbVar.962	Codons 127/128 (-AGG); CAG GCT(Gln Ala)->C--- CT(Pro) beta0	HBB:c.383_385delAGG	deletions
+chr11	5246864	5246875	HbVar.963	Codons 128/129 (-4, -GCTG; +5, +CCACA) Codons 132-135 (-11, -AAAGTGGTGGC) Dominant inclusion body beta-thal trait	HBB:c.[385_388delinsCCACA;397_407delAAAGTGGTGGC]	insertions,deletions
+chr11	5246883	5246887	HbVar.963	Codons 128/129 (-4, -GCTG; +5, +CCACA) Codons 132-135 (-11, -AAAGTGGTGGC) Dominant inclusion body beta-thal trait	HBB:c.[385_388delinsCCACA;397_407delAAAGTGGTGGC]	insertions,deletions
+chr11	5246883	5246888	HbVar.963	Codons 128/129 (-4, -GCTG; +5, +CCACA) Codons 132-135 (-11, -AAAGTGGTGGC) Dominant inclusion body beta-thal trait	HBB:c.[385_388delinsCCACA;397_407delAAAGTGGTGGC]	insertions,deletions
+chr11	5246857	5246869	HbVar.964	Codons 134-137 [-(G)TGGCTGGTGT(G) and +(G)GCAG(G)]; Dominant inclusion body beta-thal trait	HBB:c.404_413delinsGCAG	insertions,deletions
+chr11	5246858	5246868	HbVar.964	Codons 134-137 [-(G)TGGCTGGTGT(G) and +(G)GCAG(G)]; Dominant inclusion body beta-thal trait	HBB:c.404_413delinsGCAG	insertions,deletions
+chr11	5246724	5246737	HbVar.966	3'UTR (-GCATCTGGATTCT) beta (0 or + unclear)	HBB:c.*91_*103delGCATCTGGATTCT	deletions
+chr11	5246716	5246718	HbVar.972	Poly A (-AT or -TA); AATAAA->A--AAA beta+	HBB:c.[*109_*110delAT or *110_*111delTA]	deletions
+chr11	5246717	5246719	HbVar.972	Poly A (-AT or -TA); AATAAA->A--AAA beta+	HBB:c.[*109_*110delAT or *110_*111delTA]	deletions
+chr11	5246715	5246720	HbVar.973	Poly A (-AATAA); AATAAA->-----A beta+	HBB:c.*108_*112delAATAA	deletions
+chr11	5248026	5248051	HbVar.974	25 bp deletion beta0	HBB:c.93-22_95del	deletions
+chr11	5248132	5248176	HbVar.975	44 bp deletion beta0	HBB:c.76_92+27del	deletions
+chr11	5248220	5248325	HbVar.976	105 bp deletion beta0	HBB:c.-74_31del	deletions
+chr11	5248134	5248427	HbVar.977	290 bp deletion beta0	HBB:c.-176_92+25del	deletions
+chr11	5248223	5248755	HbVar.978	532 bp deletion beta0	HBB:c.-504_28del	deletions
+chr11	5246618	5247237	HbVar.979	619 bp deletion beta0	NG_000007.3:g.71609_72227del619	deletions
+chr11	5247393	5248786	HbVar.980	1,393 bp deletion beta0	NG_000007.3:g.70060_71452del1393	deletions
+chr11	5247681	5249285	HbVar.981	1,605 bp deletion the Croatian deletion beta0	NG_000007.3:g.69561_71164del1604	deletions
+chr11	5238163	5250775	HbVar.987	12,620 bp deletion; the Dutch deletion beta0	NG_000007.3:g.68071_80682del12612	deletions
+chr11	5134111	5252588	HbVar.989	~45 kb deletion; the Filipino deletion beta0	NG_000007.3:g.66258_184734del118477	deletions
+chr11	5255356	5255357	HbVar.999	Codon 59 (-A); AAG(Lys)->-AG delta0	HBD:c.179delA	deletions
+chr11	5254402	5261609	HbVar.1005	-7.2 kb; the Corfu deletion delta0	NG_000007.3:g.57237_64443del7207	deletions
+chr11	5271188	5271201	HbVar.1020	The 13 bp deletion (-CAATAGCCTTGAC at -114 through -102); HPFH	HBG1:c.-167_-155delCAATAGCCTTGAC	deletions
+chr11	5174450	5259368	HbVar.1021	HPFH-1; Black	NG_000007.3:g.59478_144395del84918	deletions
+chr11	5179667	5263979	HbVar.1022	HPFH-2; Ghanaian	NG_000007.3:g.54867_139178del84312	deletions
+chr11	5215688	5265456	HbVar.1023	HPFH-3; Indian	NG_000007.3:g.53390_103157del49768	deletions
+chr11	5235675	5268337	HbVar.1028	Indian <sup>G</sup>gamma<sup>A</sup>gamma(deltabeta)0-Thal	NG_000007.3:g.50509_83170del32662	deletions
+chr11	5153697	5267363	HbVar.1029	Japanese (deltabeta)0-Thal	NG_000007.3:g.51483_165148del113666	deletions
+chr11	5165560	5258471	HbVar.1030	Spanish (deltabeta)0-Thal	NG_000007.3:g.60375_153285del92911	deletions
+chr11	5246294	5258116	HbVar.1031	Black (deltabeta)0-Thal	NG_000007.3:g.(60530_60730)_(72351_72551)del11822	deletions
+chr11	5241852	5254462	HbVar.1034	Thai (deltabeta)0-Thal	NG_000007.3:g.64384_76993del12610	deletions
+chr11	5241107	5254510	HbVar.1035	Sicilian (deltabeta)0-Thal	NG_000007.3:g.64336_77738del13403	deletions
+chr11	5219205	5272527	HbVar.1039	German <sup>G</sup>gamma(<sup>A</sup>gammadeltabeta)0-Thal	NG_000007.3:g.(45922_46319)_(98640_99640)del	deletions
+chr11	5237180	5273436	HbVar.1042	Turkish <sup>G</sup>gamma(<sup>A</sup>gammadeltabeta)0-Thal	NG_000007.3:g.45410_81665del36256	deletions
+chr11	5228696	5271293	HbVar.1043	Malay-2 <sup>G</sup>gamma(<sup>A</sup>gammadeltabeta)0-Thal	NG_000007.3:g.(47376_47553)_(89149_90149)del	deletions
+chr11	5233956	5269806	HbVar.1045	Black <sup>G</sup>gamma(<sup>A</sup>gammadeltabeta)0-Thal	NG_000007.3:g.49040_84889del35850	deletions
+chr11	5191147	5270051	HbVar.1046	Chinese <sup>G</sup>gamma(<sup>A</sup>gammadeltabeta)0-Thal	NG_000007.3:g.48795_127698del78904	deletions
+chr11	5193973	5273251	HbVar.1048	HPFH-6	NG_000007.3:g.45595_124872del79278	deletions
+chr11	5215687	5270746	HbVar.1049	Italian (Agamma-delta-beta)0	NG_000007.3:g.(48103_48100)_(103161_103158)del55059	deletions
+chr11	5247924	5343647	HbVar.1052	Anglo-Saxon (epsilon-gamma-delta-beta)0-Thal	NC_000011.8:g.5204501_5300223del	deletions
+chr11	5153535	5356385	HbVar.1055	Irish (epsilon-gamma-delta-beta)0-Thal	NC_000011.8:g.5110112_5312961del	deletions
+chr11	5250661	5350493	HbVar.1056	Dutch (epsilon-gamma-delta-beta)0-Thal	NC_000011.8:g.5207238_5307069del	deletions
+chr11	5300802	5340585	HbVar.1058	Hispanic (epsilon-gamma-delta-beta)0-Thal	NC_000011.8:g.5257379_5297161del	deletions
+chr16	222912	222913	HbVar.1062	Initiation codon (-T); ATG->A-G of the alpha2 gene alpha-Thal-2	HBA2:c.2delT	deletions
+chr16	223007	223012	HbVar.1065	IVS-I donor site (GAG GTG AGG->GAG G- - - - -); alpha2-globin gene	HBA2:c.95+2_95+6delTGAGG	deletions
+chr16	226986	226999	HbVar.1068	Deletion of 13 nts from codons 51-55 of the alpha1 gene; alpha-Thal-2	HBA1:c.155_167delGCTCTGCCCAGGT	deletions
+chr16	223691	223693	HbVar.1072	Poly A; AATAAA->AATA- - of the alpha2 gene alpha-thal-2	HBA2:c.*93_*94delAA	deletions
+chr16	223672	223688	HbVar.1073	3'UTR (-16 bp) alpha2 gene; alpha-Thal-2	HBA2:c.*74_*89delCCTTCCTGGTCTTTGA	deletions
+chr16	225799	228500	HbVar.1074	2.7 kb deletion involving the alpha1 gene alpha-Thal-2	NG_000006.1:g.36664_39364del2701	deletions
+chr16	226599	230100	HbVar.1075	3.5 kb deletion involving the alpha1 gene alpha-Thal-2	NG_000006.1:g.37464_40964del3501	deletions
+chr16	223299	227103	HbVar.1076	3.7 kb (type I) deletion alpha-2	NG_000006.1:g.34164_37967del3804	deletions
+chr16	217819	223066	HbVar.1080	5.3 kb deletion; alpha-Thal-2	NG_000006.1:g.28684_33930del5246	deletions
+chr16	221999	231400	HbVar.1083	- -(GEO); 8.5 kb deletion including the alpha2- and alpha1- globin genes alpha-Thal-1	NG_000006.1:g.32864_42264del9401	deletions
+chr16	219999	230550	HbVar.1084	- -(SPAN); deletion of 10.5-12.0 kb including both alpha-globin genes alpha-Thal-1	NG_000006.1:g.30864_41414del10551	deletions
+chr16	218499	231600	HbVar.1085	- -(CANT); a deletion of 14.0-15.4 kb removing both alpha-globin genes alpha-Thal-1	NG_000006.1:g.29364_42464del13101	deletions
+chr16	215399	234700	HbVar.1086	- -(SEA); deletion of ~20 kb including both alpha-globin genes alpha-Thal-1	NG_000006.1:g.26264_45564del19301	deletions
+chr16	213799	230200	HbVar.1087	- -(MED-I); deletion of ~17.5 kb including both alpha-globin genes alpha-Thal-1	NG_000006.1:g.24664_41064del16401	deletions
+chr16	204299	227000	HbVar.1088	-(alpha)20.5; this 20.5 kb deletion involves alpha2 and the 5' end of alpha1; alpha-Thal-1	NG_000006.1:g.15164_37864del22701	deletions
+chr16	208099	229000	HbVar.1089	- -(MA); deletion of ~22 kb involving both alpha genes alpha-Thal-1	NG_000006.1:g.18964_39864del20901	deletions
+chr16	208599	232200	HbVar.1090	- -(SA); deletion of 22.8-23.7 kb involving both alpha-globin genes; alpha-Thal-1	NG_000006.1:g.19464_43064del23601	deletions
+chr16	205499	234800	HbVar.1091	- -(BRIT); deletion of ~26 kb involving both alpha genes alpha-Thal-1	NG_000006.1:g.16364_45664del29301	deletions
+chr16	202449	313800	HbVar.1093	- -(CL); deletion of at least 40 kb involving the two alpha and zeta genes alpha-Thal-1	NG_000006.1:g.13314_124664del111351	deletions
+chr16	200819	232670	HbVar.1094	- -(FIL); a deletion of 30-34 kb involving the alpha1, alpha2, and zeta genes alpha-Thal-1	NG_000006.1:g.11684_43534del31851	deletions
+chr16	199799	233300	HbVar.1095	- -(THAI); a deletion of 34-38 kb involving the alpha1, alpha2, and zeta genes alpha-Thal-1	NG_000006.1:g.10664_44164del33501	deletions
+chr16	197599	229800	HbVar.1096	- -(CAL); deletion of 32 kb involving both the alpha and zeta genes alpha-Thal-1	NG_000006.1:g.8464_40664del32201	deletions
+chr16	199999	230000	HbVar.1097	- -(MED-II); a deletion of 26.5 kb involving the two alpha and zeta genes alpha-Thal-1	NG_000006.1:g.10864_40864del30001	deletions
+chr16	201399	238300	HbVar.1100	- -(RT); a deletion of 36.5-40 kb removing the entire alpha gene locus alpha-Thal-1	NG_000006.1:g.12264_49164del36901	deletions
+chr16	189299	232500	HbVar.1102	- -(MC); a deletion of at least 46 kb involving both alpha genes and zeta gene alpha-Thal-1	NG_000006.1:g.164_43364del43201	deletions
+chr11	5248235	5248236	HbVar.1135	Hb Antalya	HBB:c.[16delC;8_9insC]	insertions,deletions
+chr11	5248242	5248244	HbVar.1135	Hb Antalya	HBB:c.[16delC;8_9insC]	insertions,deletions
+chr11	5246837	5246838	HbVar.1164	Hb Trento	HBB:c.434delA	deletions
+chr11	5246847	5246848	HbVar.1213	Hb Florida	HBB:c.424delC	deletions
+chr11	5246914	5246915	HbVar.1221	Hb Sainte Seve	HBB:c.357delT	deletions
+chr11	5246853	5246859	HbVar.1237	Hb Stara Zagora	HBB:c.413_418delTGGCTA	deletions
+chr16	60001	172801	HbVar.1254	Ti~	NC_000016.8:g.1_112800del	deletions
+chr16	227078	227087	HbVar.2504	Codons 82/83/84 del 5bp insertion	HBA1:c.247_255delGCCCTGAGC	deletions
+chr11	5246874	5246876	HbVar.2510	Codons 131/132 (-GA)	HBB:c.396_397delGA	deletions
+chr11	5247846	5247847	HbVar.2511	Hb MorganTown	HBB:c.275delT	deletions
+chr16	222966	222967	HbVar.2516	Alpha 2 Cd18 (-G)	HBA2:c.56delG	deletions
+chr11	5247889	5247890	HbVar.2533	Cd77/78 (-C)	HBB:c.232delC	deletions
+chr11	5248326	5248328	HbVar.2537	-27 (-AA)	HBB:c.-77_-76delAA	deletions
+chr11	5247891	5247893	HbVar.2538	Cd76 (-GC)	HBB:c.229_230delGC	deletions
+chr11	5246943	5247257	HbVar.2545	Hb Jambol	HBB:c.[316-300_327delinsCAGGTGCCATCTGTCACCCTTTTCTTTG;316-316_316-315insAATATATTTTTAATATACTTTTT]	insertions
+chr11	5246944	5247256	HbVar.2545	Hb Jambol	HBB:c.[316-300_327delinsCAGGTGCCATCTGTCACCCTTTTCTTTG;316-316_316-315insAATATATTTTTAATATACTTTTT]	insertions
+chr11	5247270	5247272	HbVar.2545	Hb Jambol	HBB:c.[316-300_327delinsCAGGTGCCATCTGTCACCCTTTTCTTTG;316-316_316-315insAATATATTTTTAATATACTTTTT]	insertions
+chr11	5247807	5247808	HbVar.2574	Codon 104 (-G)	HBB:c.314delG	deletions
+chr16	223176	223178	HbVar.2575	Codon 49 (-GC)	HBA2:c.149_150delGC	deletions
+chr16	227376	227377	HbVar.2622	Hb Fez	HBA1:c.396delT	deletions
+chr16	227385	227386	HbVar.2623	Hb Senlis	HBA1:c.405delC	deletions
+chr11	5248173	5248185	HbVar.2663	Hb Olinda	HBB:c.67_78delGAAGTTGGTGGT	deletions
+chr11	5246841	5246843	HbVar.2664	Hb Uzes	HBB:c.429_430delCC	deletions
+chr11	5248232	5248234	HbVar.2703	Codon 5/6 (-TG)	HBB:c.18_19delTG	deletions
+chr11	5247793	5247805	HbVar.2706	IVS2-2 (-TGAGTCTATGGG)	HBB:c.315+2_315+13delTGAGTCTATGGG	deletions
+chr11	5246941	5246953	HbVar.2713	Codon 106 (-CTGGGCAACGTG)	HBB:c.319_330delCTGGGCAACGTG	deletions
+chr11	5246917	5246918	HbVar.2715	Codon 117 (-C)	HBB:c.354delC	deletions
+chr11	5246890	5246896	HbVar.2716	Codon 125 (-CCAGTG)	HBB:c.376_381delCCAGTG	deletions
+chr11	5246715	5246717	HbVar.2721	Poly A (-AA) 	HBB:c.*111_*112delAA	deletions
+chr16	227308	227309	HbVar.2724	&#945;1 Codon 108 (-C) 	HBA1:c.328delC	deletions
+chr16	227313	227326	HbVar.2725	&#945;1 Codon 124-128 (-13bp)	HBA1:c.333_345delCGCCCACCTCCCC	deletions
+chr16	223141	223142	HbVar.2726	&#945;2 Codon 37 (-C) 	HBA2:c.114delC	deletions
+chr16	223170	223171	HbVar.2728	&#945;2 Codon 47 (-A)	HBA2:c.143delA	deletions
+chr16	223474	223475	HbVar.2730	&#945;2 Codon 63-76 (-42bp)	HBA2:c.190_231del	deletions
+chr16	103624	193676	HbVar.2731	hg19 chr16:g.(?_103625)_(163701_193676)del	chr16:g.(?_103,625)_163,701_193,676)del(Build GRCh37)	deletions
+chr16	227019	227020	HbVar.2736	Codon 62 (-G)	HBA1:c.189delG	deletions
+chr11	5248681	5248729	HbVar.2738	Afghan deletion beta0 (909 bp del)	HBB:c.-528_251del	deletions
+chr16	223515	223518	HbVar.2765	Hb Towson	HBA2:c.346_348delGCC	deletions
+chr16	223001	223004	HbVar.2776	Alpha2 Codon 30 del GAG	HBA2:c.91_93delGAG	deletions
+chr11	5248002	5248003	HbVar.2808	Codon 39 (-A)	HBB:c.119delA	deletions
+chr11	5247954	5247975	HbVar.2823	Hb Martinez	HBB:c.148_166delinsAGCT	insertions,deletions
+chr11	5247955	5247974	HbVar.2823	Hb Martinez	HBB:c.148_166delinsAGCT	insertions,deletions
+chr16	223492	223493	HbVar.2832	Hb Lynwood	HBA2:c.323delT	deletions
+chr16	222979	222988	HbVar.2834	Hb Zhanjiang	HBA2:c.69_77delCGAGTATGG	deletions
+chr16	222937	222938	HbVar.2841	Hb Codon 8 (-C); ACC (Thr)>AC- Alpha0	HBA2:c.27delC	deletions
+chr11	5247878	5247881	HbVar.2846	Hb Saint-Chamond	HBB:c.241_243delAAC	deletions
+chr16	223158	223159	HbVar.2854	Codon 43 (-T)	HBA2:c.131delT	deletions
+chr11	5246908	5246909	HbVar.2860	Hb Filottrano	HBB:c.363delA	deletions
+chr16	223518	223529	HbVar.2867	HBA2:c.349_359delGAGTTCACCCC	HBA2:c.349_359delGAGTTCACCCC	deletions
+chr11	5248206	5248232	HbVar.2870	HBB:c.20_45del26	HBB:c.20_45del	deletions
+chr16	223004	223006	HbVar.2871	Alpha-3.7KbAllele:c.94_95delAG	HBA2:c.94_95delAG (or HBA1)	deletions
+chr16	226808	226810	HbVar.2871	Alpha-3.7KbAllele:c.94_95delAG	HBA2:c.94_95delAG (or HBA1)	deletions
+chr11	5246239	5270099	HbVar.2872	Algerian HPFH deletion	U01317.1:g.[(48747_72606)del23860;(72609_72611)delA]	deletions
+chr11	5246099	5265833	HbVar.2873	French HPFH deletion	U01317.1:g.[53013_72746del19734;53009_53010insC].	deletions
+chr11	5246356	5270084	HbVar.2874	French West-Indies HPFH deletion	U01317.1:g.48762_72489del23728insCAGCAGGAAAGTGTGAGAAG	deletions
+chr11	5254797	5256837	HbVar.2875	Kabylian deletion-insertion	U01317.1:g.62009_64049del2040insATAAG	deletions
+chr11	5222684	5250509	HbVar.2878	Caucasian-HPFH	NC_000011.9:g.5222685_5250509del27825;5245190_5245166ins25	deletions
+chr11	5256768	5256893	HbVar.2879	-125 bp deletion	U01317:g.61953_62077del125	deletions
+chr11	5239576	5247295	HbVar.2880	-7719 bp del	U01317:g.71551_79269del7719	deletions
+chr11	5247905	5247906	HbVar.2886	HBB:c.216delT	HBB:c.216delT	deletions
+chr16	222970	222971	HbVar.2889	Alpha 2 Cd19 (-G)	HBA2:c.60delG	deletions
+chr11	5248220	5255637	HbVar.2890	NG_000007.3:g.(63154-63209)-(70570-70625)del7417	NG_000007.3:g.(63154_63209)_(70570_70625)del7417	deletions
+chr16	223440	223643	HbVar.2909	203 bp deletion (HBA2 exon 3)	NG_000006.1:g.34305_34507del203	deletions
+chr16	203507	203509	HbVar.2921	Qinzhou type deletion; Alpha-thal 2	NG_000006.1:g.14373_36299del21927zeta2:c.-9613_-9612insGGGAAGGGTGGGTGGGAATAACAGCTTTT	insertions,deletions
+chr16	203508	225435	HbVar.2921	Qinzhou type deletion; Alpha-thal 2	NG_000006.1:g.14373_36299del21927zeta2:c.-9613_-9612insGGGAAGGGTGGGTGGGAATAACAGCTTTT	insertions,deletions
+chr11	5305018	5307011	HbVar.2925	1992 bp deletion (HS3 region - HBB Locus Control Region)	NG_000007.3:g.(11834_11835)_(13826_13827)del1992	deletions
+chr16	223557	223558	HbVar.2926	Hb Hamilton Hill	HBA2:c.388delC	deletions
+chr16	222950	222956	HbVar.2933	Hb Souli	HBA2:c.40_45delGCCTGG	deletions
+chr16	223173	223191	HbVar.2951	Hb Fenton	HBA2:c.146_163delTGAGCCACGGCTCTGCCC	deletions
+chr16	223582	223587	HbVar.2953	Hb Pohnpei	HBA2:c.414_416delinsTCT	insertions,deletions
+chr16	223583	223586	HbVar.2953	Hb Pohnpei	HBA2:c.414_416delinsTCT	insertions,deletions
+chr16	227018	227019	HbVar.2956	Hb Champaign	HBA1:c.187delG	deletions
+chr11	5247992	5247993	HbVar.2967	Hb Yala	HBB:c.129delT	deletions
+chr16	223176	223200	HbVar.2968	Hb Goya	HBA2:c.149_172del	deletions
+chr11	5247963	5247964	HbVar.2973	Codon 52 (-A)	HBB:c.158delA	deletions
+chr16	223514	223515	HbVar.3055	HBA2:c.345delC	HBA2:c.345delC	deletions
+chr11	5248172	5248175	HbVar.3061	Hb M Dothan	HBB:c.77_79delGTG	deletions
+chr11	5247945	5247946	HbVar.3065	Beta Codon 58 (-C)	HBB:c.176delC	deletions
+chr11	5246858	5246860	HbVar.3069	Hb Allentown	HBB:c.412_413delinsTG	insertions,deletions
+chr11	5246858	5246860	HbVar.3069	Hb Allentown	HBB:c.412_413delinsTG	insertions,deletions
+chr11	5247926	5247933	HbVar.3080	HBB:c.189_195delTCATGGC	HBB:c.189_195delTCATGGC	deletions
+chr11	5246922	5246924	HbVar.3090	Hb Grand Junction	HBB:c.348_349delinsG	insertions,deletions
+chr11	5246922	5246924	HbVar.3090	Hb Grand Junction	HBB:c.348_349delinsG	insertions,deletions
+chr11	5247855	5247857	HbVar.3092	beta 88 (-CT); modified C-terminal sequence	HBB:c.265_266delCT	deletions
+chr16	223445	223447	HbVar.3134	HBA2:c.301-24delGinsCTCGGCCC	HBA2:c.301-24delinsCTCGGCCC	insertions,deletions
+chr11	5246850	5246851	HbVar.3139	Hb Templeuve	HBB:c.[421G>A ;418_420delAAT]	deletions,substitution
+chr16	227033	227034	HbVar.3150	&#945;1 Codon 67 (-A)	HBA1:c.202delA	deletions
+chr11	5248221	5248222	HbVar.3174	Hb Antep	HBB:c.30delT	deletions
+chr16	223569	223576	HbVar.3179	Hb Aalesund	HBA2:c.400_406delAGCACCG	deletions
+chr16	223169	223189	HbVar.3180	alpha2 47(-C)	HBA2:c.142_161delGACCTGAGCCACGGCTCTGC	deletions
+chr11	5031236	5254163	HbVar.3181	beta 223 Kb Chinese deletion	NC_000011.9:g.5031237_5254163del	deletions
+chr16	96620	176318	HbVar.3189	79.7 Kb deletion	NC_000016.9:g.96621_176318del	deletions
+chr16	147577	207873	HbVar.3190	60.3 Kb deletion	NC_000016.9:g.147578_207873del	deletions
+chr11	5248244	5248245	HbVar.3193	Hb Bundelkhand	HBB:c.7delC	deletions
+chr11	5246863	5246864	HbVar.3194	Hb Urumqi	HBB:c.408delT	deletions
+chr11	5254246	5254247	HbVar.3227	Hb A2-Gaslini1	HBD:c.391delT	deletions
+chr11	5255252	5255254	HbVar.3233	delta(0) Cys94*	HBD:c.282_283delTG	deletions
+chr11	5247808	5247809	HbVar.3235	HBB codon104(-A)	HBB:c.313delA	deletions
+chr11	5255390	5255401	HbVar.3253	Codon45(-CTTTGGGGATC)	HBD:c.135_145delCTTTGGGGATC	deletions
+chr11	5246914	5246916	HbVar.3256	Codon118(-TT)	HBB:c.356_357delTT	deletions
+chr11	5246870	5246883	HbVar.3259	Hb Phoenix	HBB:c.389_401delCCTATCAGAAAGT	deletions
+chr16	223234	223235	HbVar.3292	 alpha 2 codon 68(-C)	HBA2:c.207delC	deletions
+chr16	222914	222915	HbVar.3293	alpha 2 codon 1(-G)	HBA2:c.4delG	deletions

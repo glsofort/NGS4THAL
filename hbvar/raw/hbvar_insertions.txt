@@ -1,0 +1,108 @@
+#chrom	chromStart	chromEnd	HbVar.ID	commonName	HGVSname	mutationType
+#coordinates using UCSC numbering system (chromStart zero based)
+chr11	5246834	5246836	HbVar.709	Hb Cranston	HBB:c.436_437insCT	insertions
+chr11	5246829	5246831	HbVar.710	Hb Tak	HBB:c.441_442insAC	insertions
+chr16	223141	223143	HbVar.732	Hb Catonsville	HBA1:c.114_115insGAA (or HBA2)	insertions
+chr16	226945	226947	HbVar.732	Hb Catonsville	HBA1:c.114_115insGAA (or HBA2)	insertions
+chr16	223520	223522	HbVar.733	Hb Za&iuml;re	HBA1:p.Glu117_Phe118insHisLeuProAlaGlu (or HBA2)	insertions
+chr16	227331	227333	HbVar.733	Hb Za&iuml;re	HBA1:p.Glu117_Phe118insHisLeuProAlaGlu (or HBA2)	insertions
+chr16	227334	227336	HbVar.734	Hb Phnom Penh	HBA1:p.Phe118_Thr119insI	insertions
+chr16	223526	223528	HbVar.735	Hb Grady	HBA1:p.Thr119_Pro120insGluPheThr (or HBA2)	insertions
+chr16	227337	227339	HbVar.735	Hb Grady	HBA1:p.Thr119_Pro120insGluPheThr (or HBA2)	insertions
+chr11	5247835	5247837	HbVar.736	Hb Fairfax	HBB:c.285_286insGAGCTGCACTGTGAC	insertions
+chr11	5247832	5247834	HbVar.737	Hb Koriyama	HBB:p.Lys96_Leu97insLeuHisCysAspLys	insertions
+chr11	5247892	5247903	HbVar.738	Hb Montreal	HBB:c.220_228delinsAlaArgCysGln	insertions,deletions
+chr11	5247893	5247902	HbVar.738	Hb Montreal	HBB:c.220_228delinsAlaArgCysGln	insertions,deletions
+chr11	5248235	5248246	HbVar.782	Codons 2/3/4 (-9 bp; +31 bp); beta0	HBB:c.7_15delinsCCTGAGGTGAAGTCTGCCTGAGGAGAAGTCT	insertions,deletions
+chr11	5248236	5248245	HbVar.782	Codons 2/3/4 (-9 bp; +31 bp); beta0	HBB:c.7_15delinsCCTGAGGTGAAGTCTGCCTGAGGAGAAGTCT	insertions,deletions
+chr11	5248223	5248225	HbVar.786	Codons 8/9 (+G); AAG TCT(Lys;Ser)->AAG G TCT beta0	HBB:c.27_28insG	insertions
+chr11	5248220	5248222	HbVar.787	Codons 9/10 (+T); TCT GCC(Ser;Ala)->TCT T GCC beta0	HBB:c.30_31insT	insertions
+chr11	5248205	5248207	HbVar.790	Codons 14/15 (+G); CTG TGG(Leu;Trp)->CTG G TGG beta0	HBB:c.45_46insG	insertions
+chr11	5248176	5248180	HbVar.804	Codon 24; GGT(Gly); (-G; +CAC) beta0	HBB:c.74delinsCAC	insertions,deletions
+chr11	5248177	5248178	HbVar.804	Codon 24; GGT(Gly); (-G; +CAC) beta0	HBB:c.74delinsCAC	insertions,deletions
+chr11	5248172	5248174	HbVar.807	Codons 25/26 (+T); GGT GAG(Gly-Glu)->GGT T GAG(Gly-Term) beta0	HBB:c.78_79insT	insertions
+chr11	5248171	5248173	HbVar.809	Codon 26 (+T); GAG(Glu)->GTAG beta0	HBB:c.79_80insT	insertions
+chr11	5248166	5248168	HbVar.810	Codons 27/28 (+C); GCC CTG(Ala Ser)->GCC C CTG beta0	HBB:c.84_85insC	insertions
+chr11	5248027	5248029	HbVar.836	Codons 31/32 (+CGG) beta0 (dominant beta0-thal)	HBB:c.93_94insCGG	insertions
+chr11	5247997	5247999	HbVar.847	Codons 40/41 (+T); AGG TTC(Arg-Phe)->AGG T TTC beta0	HBB:c.123_124insT	insertions
+chr11	5247991	5247993	HbVar.850	Codons 42/43 (+G); TTT GAG(Phe Glu)->TTT G GAG beta0	HBB:c.129_130insG	insertions
+chr11	5247991	5247993	HbVar.851	Codons 42/43 (+T) TTT GAG(Phe Glu)->TTT TGA G(Phe;stop codon) beta0	HBB:c.129_130insT	insertions
+chr11	5247977	5247979	HbVar.856	Codon 47 (+A); GAT(Asp)->GAA(Glu) T beta0	HBB:c.143_144insA	insertions
+chr11	5247974	5247976	HbVar.857	Codons 47/48 (+ATCT); GAT CTG(Asp Leu)->GAT CTATCTG beta0	HBB:c.146_147insATCT	insertions
+chr11	5247958	5247960	HbVar.860	53/54 (+G); GCT GTT(Ala-Val)->GCT G GTT beta0	HBB:c.162_163insG	insertions
+chr11	5247955	5247957	HbVar.862	Codons 54/55 (+A); GTT ATG(Val Met)->GTT A ATG beta0	HBB:c.165_166insA	insertions
+chr11	5247938	5247952	HbVar.863	Codons 56/57/58/59/60 (GGC AAC CCT AAG GTG); duplication of 14 bp beta0	HBB:c.170_183dup	insertions
+chr11	5247946	5247948	HbVar.864	Codons 57/58 (+C); AAC CCT(Asn Pro)->AAC C CCT beta0	HBB:c.174_175insC	insertions
+chr11	5247904	5247906	HbVar.869	Codons 71/72 (+A); TTT AGT(Phe Ser)->TTT A AGT; beta0	HBB:c.216_217insA	insertions
+chr11	5247904	5247906	HbVar.870	Codons 71/72 (+T); TTT AGT(Phe Ser)->TTT T AGT beta0	HBB:c.216_217insT	insertions
+chr11	5247899	5247906	HbVar.871	Codons 72/73; -AGTGA, +T; AGT GAT(Ser-Asp)->---- TT beta0	HBB:c.217_221delinsT	insertions,deletions
+chr11	5247900	5247905	HbVar.871	Codons 72/73; -AGTGA, +T; AGT GAT(Ser-Asp)->---- TT beta0	HBB:c.217_221delinsT	insertions,deletions
+chr11	5247865	5247867	HbVar.876	Codons 84/85 (+C); ACC TTT(Thr Phe)->ACC C TTT beta0	HBB:c.255_256insC	insertions
+chr11	5247862	5247864	HbVar.877	Codons 84/85/86 (+T); ACC TTT GCC(Thr Phe Ala)->ACC TTT T GCC beta0	HBB:c.258_259insT	insertions
+chr11	5247854	5247856	HbVar.878	Codon 88 (+T); CTG(Leu)->CTTG beta0	HBB:c.266_267insT	insertions
+chr11	5247837	5247839	HbVar.881	Hb Agnana	HBB:c.283_284insTG	insertions
+chr11	5247833	5247835	HbVar.882	Codon 95 (+A); AAG(Lys)->AAAG beta0	HBB:c.287_288insA	insertions
+chr11	5247817	5247822	HbVar.883	Codon 100; -CTT, +TCTGAGAACTT beta0 (dominant type)	HBB:c.301_303delinsTCTGAGAACTT	insertions,deletions
+chr11	5247818	5247821	HbVar.883	Codon 100; -CTT, +TCTGAGAACTT beta0 (dominant type)	HBB:c.301_303delinsTCTGAGAACTT	insertions,deletions
+chr11	5247802	5247806	HbVar.886	IVS-II-2,3 (+11, -2); beta0	HBB:c.315+2_315+3delinsACGTTCTCTGA	insertions,deletions
+chr11	5247803	5247805	HbVar.886	IVS-II-2,3 (+11, -2); beta0	HBB:c.315+2_315+3delinsACGTTCTCTGA	insertions,deletions
+chr16	223288	223290	HbVar.902	Hb Neuilly-sur-Marne	HBA1:p.Leu87_His88insSerAspLeu (or HBA2)	insertions
+chr16	227092	227094	HbVar.902	Hb Neuilly-sur-Marne	HBA1:p.Leu87_His88insSerAspLeu (or HBA2)	insertions
+chr11	5246949	5246951	HbVar.945	Codons 106/107 (+G); CTG GGC(Leu Gly)->CTG G GC beta0	HBB:c.321_322insG	insertions
+chr11	5246926	5246930	HbVar.949	Hb Geneva	HBB:c.343_344delinsG	insertions,deletions
+chr11	5246927	5246929	HbVar.949	Hb Geneva	HBB:c.343_344delinsG	insertions,deletions
+chr11	5246907	5246909	HbVar.950	Codons 120/121 (+A); AAA GAA(Lys-Glu)->AAA A GAA beta0 (mild dominant type of beta-thal)	HBB:c.363_364insA	insertions
+chr11	5246892	5246894	HbVar.956	Codons 124-126 (+CCA); Dominant inclusion body beta-thal trait	HBB:c.378_379insCCA	insertions
+chr11	5246864	5246875	HbVar.963	Codons 128/129 (-4, -GCTG; +5, +CCACA) Codons 132-135 (-11, -AAAGTGGTGGC) Dominant inclusion body beta-thal trait	HBB:c.[385_388delinsCCACA;397_407delAAAGTGGTGGC]	insertions,deletions
+chr11	5246883	5246887	HbVar.963	Codons 128/129 (-4, -GCTG; +5, +CCACA) Codons 132-135 (-11, -AAAGTGGTGGC) Dominant inclusion body beta-thal trait	HBB:c.[385_388delinsCCACA;397_407delAAAGTGGTGGC]	insertions,deletions
+chr11	5246883	5246888	HbVar.963	Codons 128/129 (-4, -GCTG; +5, +CCACA) Codons 132-135 (-11, -AAAGTGGTGGC) Dominant inclusion body beta-thal trait	HBB:c.[385_388delinsCCACA;397_407delAAAGTGGTGGC]	insertions,deletions
+chr11	5246857	5246869	HbVar.964	Codons 134-137 [-(G)TGGCTGGTGT(G) and +(G)GCAG(G)]; Dominant inclusion body beta-thal trait	HBB:c.404_413delinsGCAG	insertions,deletions
+chr11	5246858	5246868	HbVar.964	Codons 134-137 [-(G)TGGCTGGTGT(G) and +(G)GCAG(G)]; Dominant inclusion body beta-thal trait	HBB:c.404_413delinsGCAG	insertions,deletions
+chr11	5255264	5255266	HbVar.1000	Codon 91 (+T) delta0	HBD:c.270_271insT	insertions
+chr11	5247911	5247913	HbVar.1110	Hb Nishinomiya	HBB:c.209_210insGCTCGG	insertions
+chr11	5248235	5248236	HbVar.1135	Hb Antalya	HBB:c.[16delC;8_9insC]	insertions,deletions
+chr11	5248242	5248244	HbVar.1135	Hb Antalya	HBB:c.[16delC;8_9insC]	insertions,deletions
+chr16	227376	227378	HbVar.1142	Hb Pak Num Po	HBA1:c.396_397insT	insertions
+chr16	227038	227040	HbVar.1184	Hb Esch	HBA1:c.207_208insGCGCTGACCAAC	insertions
+chr11	5246921	5246923	HbVar.1200	Codon 116 (+TGAT)	HBB:c.349_350insTGAT	insertions
+chr11	5246921	5246923	HbVar.1204	Hb Antibes-Juan-Les-Pins	HBB:c.349_350insGTGTGCTGGCCC	insertions
+chr11	5246943	5247257	HbVar.2545	Hb Jambol	HBB:c.[316-300_327delinsCAGGTGCCATCTGTCACCCTTTTCTTTG;316-316_316-315insAATATATTTTTAATATACTTTTT]	insertions
+chr11	5246944	5247256	HbVar.2545	Hb Jambol	HBB:c.[316-300_327delinsCAGGTGCCATCTGTCACCCTTTTCTTTG;316-316_316-315insAATATATTTTTAATATACTTTTT]	insertions
+chr11	5247270	5247272	HbVar.2545	Hb Jambol	HBB:c.[316-300_327delinsCAGGTGCCATCTGTCACCCTTTTCTTTG;316-316_316-315insAATATATTTTTAATATACTTTTT]	insertions
+chr11	5247868	5247870	HbVar.2558	Codon 84 (65bp duplication)	HBB:c.252_253insNG_000007.3:g.70911_70975	insertions
+chr11	5246829	5246831	HbVar.2633	Hb Monplaisir	HBB:c.441_442insTA	insertions
+chr11	5247901	5247903	HbVar.2705	Codon 72/73 (+T)	HBB:c.219_220insT	insertions
+chr11	5246925	5246927	HbVar.2714	Codon 114 (+TGTGCTG)	HBB:c.345_346insTGTGCTG	insertions
+chr11	5246876	5246878	HbVar.2718	Codon 131 (+A)	HBB:c.394_395insA	insertions
+chr16	222976	222978	HbVar.2727	&#945;2 Codon 21/22 (+T) 	HBA2:c.66_67insT	insertions
+chr16	223183	223185	HbVar.2729	&#945;2 Codon 51/52 (+G)	HBA2:c.156_157insG	insertions
+chr11	5246895	5246897	HbVar.2735	Codon 124/125(+A)	HBB:c.375_376insA	insertions
+chr16	226723	226725	HbVar.2743	Hb Pittsburgh	HBA1:c.9_10insCTG	insertions
+chr16	226776	226778	HbVar.2800	Hb alpha1 codon20(+T)	HBA1:c.62_63insT	insertions
+chr11	5247954	5247975	HbVar.2823	Hb Martinez	HBB:c.148_166delinsAGCT	insertions,deletions
+chr11	5247955	5247974	HbVar.2823	Hb Martinez	HBB:c.148_166delinsAGCT	insertions,deletions
+chr11	5247040	5247042	HbVar.2892	IVS-II-765 L1	HBB:c.316-86_316-85insCTGCTTTTATTTT	insertions
+chr16	226965	226967	HbVar.2902	Codon 44 (+C) (Alpha 1)	HBA1:c.134_135insC	insertions
+chr11	5247870	5247935	HbVar.2910	HBB:c.187_251dup	HBB:c.187_251dup	insertions
+chr16	203507	203509	HbVar.2921	Qinzhou type deletion; Alpha-thal 2	NG_000006.1:g.14373_36299del21927zeta2:c.-9613_-9612insGGGAAGGGTGGGTGGGAATAACAGCTTTT	insertions,deletions
+chr16	203508	225435	HbVar.2921	Qinzhou type deletion; Alpha-thal 2	NG_000006.1:g.14373_36299del21927zeta2:c.-9613_-9612insGGGAAGGGTGGGTGGGAATAACAGCTTTT	insertions,deletions
+chr11	5248225	5248229	HbVar.2928	Codons 8/9 (+AGAA)	HBB:c.23_26dup	insertions
+chr11	5247913	5247915	HbVar.2937	Hb Bronx	HBB:c.207_208insAAAGTGCTC	insertions
+chr16	223511	223513	HbVar.2939	alpha2 Codon 115 (+CC)	HBA2:c.343_344insCC	insertions
+chr16	226982	226984	HbVar.2942	Hb Bakersfield	HBA1:c.151_152insGGAGCC	insertions
+chr16	227114	227135	HbVar.2952	Hb SKMC	HBA1:c.283_300+3dup	insertions
+chr16	223582	223587	HbVar.2953	Hb Pohnpei	HBA2:c.414_416delinsTCT	insertions,deletions
+chr16	223583	223586	HbVar.2953	Hb Pohnpei	HBA2:c.414_416delinsTCT	insertions,deletions
+chr11	5372676	5372678	HbVar.2961	African I duplication	Hg19.Chr11g.5372677_5372678insCACCTCCACTTdup5226885_5372677	insertions
+chr11	5248226	5248228	HbVar.2972	Codons 7/8 (+G); GAG AAG(Glu;Lys)->GAG G AAG beta0	HBB:c.24_25insG	insertions
+chr11	5246858	5246860	HbVar.3069	Hb Allentown	HBB:c.412_413delinsTG	insertions,deletions
+chr11	5246858	5246860	HbVar.3069	Hb Allentown	HBB:c.412_413delinsTG	insertions,deletions
+chr11	5246922	5246924	HbVar.3090	Hb Grand Junction	HBB:c.348_349delinsG	insertions,deletions
+chr11	5246922	5246924	HbVar.3090	Hb Grand Junction	HBB:c.348_349delinsG	insertions,deletions
+chr16	227002	227004	HbVar.3091	Hb Kaohsiung Veterans General Hospital	HBA1:c.171_172insAGCCACGGCTCTGCCCAAGTTAAG	insertions
+chr16	227334	227336	HbVar.3111	Hb Wexham	HBA1:c.354_355insTCA	insertions
+chr16	223445	223447	HbVar.3134	HBA2:c.301-24delGinsCTCGGCCC	HBA2:c.301-24delinsCTCGGCCC	insertions,deletions
+chr11	5246948	5246949	HbVar.3163	beta 107(+G)	HBB:c.323dupG	insertions
+chr16	223145	223147	HbVar.3178	alpha2 39(+A)	HBA2:c.118_119insA	insertions
+chr11	5248221	5248222	HbVar.3191	Hb Gaziantep	HBB:c.30_dupT	insertions
+chr16	223337	223339	HbVar.3299	Hb Balkh	HBA2:c.396dup	insertions
