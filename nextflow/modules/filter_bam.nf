@@ -1,5 +1,6 @@
 process FILTER_BAM {
-    label 'process_medium'
+    tag "${meta.id}-cpus:${task.cpus}"
+    label 'process_large'
 
     input:
     tuple val(meta), path(in_bam), path(in_bai)
