@@ -2,9 +2,10 @@
 
 ## Nextflow
 ```bash
-
+source .env && \
+rm -rf outdir && \
 nextflow run main.nf \
--c nextflow.conf \
+-c nextflow.config \
 -profile docker \
 --sample_id 1 \
 --genome GRCh37 \
