@@ -1,8 +1,9 @@
-def meta            = create_meta()
-def ch_bam          = file(params.bam)
-def ch_bai          = file(params.bai)
-def ch_bed          = file(params.bed)
-def ch_input        = [meta, ch_bam, ch_bai]
+def meta                = create_meta()
+def ch_bam              = file(params.bam)
+def ch_bai              = file(params.bai)
+def ch_input            = [meta, ch_bam, ch_bai]
+
+def ch_bed              = Channel.fromPath("${projectDir}/assets/Thalassaemia_${meta.genome_name}_genome.bed")
 
 def sentieon_dir        = "${params.database}/sentieon/${params.sentieon_release_version}"
 def references_dir      = "${params.database}/sentieon/${params.genome}/references"
