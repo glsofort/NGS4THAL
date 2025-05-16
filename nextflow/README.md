@@ -7,13 +7,13 @@
 ```bash
 source .env && \
 rm -rf outdir && \
-nextflow run -bg main.nf \
+nextflow run main.nf \
 -c nextflow.config \
 -profile docker \
 --sample_id 3187 \
 --bed assets/Thalassaemia_hg19_genome.bed \
---bam samples/3187.deduped.bam \
---bai samples/3187.deduped.bam.bai \
+--bam samples/3187.filtered.bam \
+--bai samples/3187.filtered.bam.bai \
 --genome GRCh37 \
 --database ${database} \
 --docker_registry namxle \
@@ -22,8 +22,8 @@ nextflow run -bg main.nf \
 --sentieon_release_version v202308.03 \
 --sentieon_auth_mech ${SENTIEON_AUTH_MECH} \
 --sentieon_auth_data ${SENTIEON_AUTH_DATA} \
---skip_filter  # Disable bam filter \
---outdir outdir
+--outdir outdir \
+--skip_filter # Disable bam filter
 ```
 
 ### Enable bam filtering
