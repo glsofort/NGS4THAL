@@ -11,15 +11,13 @@ nextflow run main.nf \
 -c nextflow.config \
 -profile docker \
 --sample_id 3187 \
---bed assets/Thalassaemia_hg19_genome.bed \
 --bam samples/3187.filtered.bam \
 --bai samples/3187.filtered.bam.bai \
 --genome GRCh37 \
 --database ${DATABASE} \
---docker_registry namxle \
---bed_dir /data/GL/beds \
+--docker_registry ${REGISTRY} \
 --sentieon_license ${SENTIEON_LICENSE} \
---sentieon_release_version v202308.03 \
+--sentieon_release_version ${SENTIEON_RELEASE} \
 --sentieon_auth_mech ${SENTIEON_AUTH_MECH} \
 --sentieon_auth_data ${SENTIEON_AUTH_DATA} \
 --outdir outdir \
@@ -35,15 +33,13 @@ nextflow run -bg main.nf \
 -c nextflow.config \
 -profile docker \
 --sample_id 3187 \
---bed assets/Thalassaemia_hg19_genome.bed \
 --bam samples/3187.deduped.bam \
 --bai samples/3187.deduped.bam.bai \
 --genome GRCh37 \
 --database ${DATABASE} \
---docker_registry namxle \
---bed_dir /data/GL/beds \
+--docker_registry ${REGISTRY} \
 --sentieon_license ${SENTIEON_LICENSE} \
---sentieon_release_version v202308.03 \
+--sentieon_release_version ${SENTIEON_RELEASE} \
 --sentieon_auth_mech ${SENTIEON_AUTH_MECH} \
 --sentieon_auth_data ${SENTIEON_AUTH_DATA} \
 --outdir outdir
