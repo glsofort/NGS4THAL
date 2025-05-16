@@ -19,6 +19,10 @@ include { REALIGNED_BAM     } from './modules/realigned_bam'
 include { HAPLOTYPE_CALLER  } from './modules/haplotype_caller'
 
 workflow NGS4THAL {
+    ch_dbsnp.collect().view()
+    ch_sentieon_dir.view()
+    ch_references_dir.collect().view()
+
     if (params.skip_filter) {
         ch_filtered_bam = ch_input
     } else {
