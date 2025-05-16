@@ -15,7 +15,7 @@ nextflow run main.nf \
 --bam samples/3187.filtered.bam \
 --bai samples/3187.filtered.bam.bai \
 --genome GRCh37 \
---database ${database} \
+--database ${DATABASE} \
 --docker_registry namxle \
 --bed_dir /data/GL/beds \
 --sentieon_license ${SENTIEON_LICENSE} \
@@ -39,7 +39,7 @@ nextflow run -bg main.nf \
 --bam samples/3187.deduped.bam \
 --bai samples/3187.deduped.bam.bai \
 --genome GRCh37 \
---database ${database} \
+--database ${DATABASE} \
 --docker_registry namxle \
 --bed_dir /data/GL/beds \
 --sentieon_license ${SENTIEON_LICENSE} \
@@ -49,7 +49,9 @@ nextflow run -bg main.nf \
 --outdir outdir
 ```
 
-## Step 1
+## Steps
+
+### Step 1
 
 Extract hemoglobin regions records from BAM files
 
@@ -58,7 +60,7 @@ samtools view -h -L Thalassaemia_hg19_genome.bed -b -o output.bam input.bam
 samtools index output.bam
 ```
 
-## Step 2
+### Step 2
 
 Modify `Thala_rescue_configuration.txt`
 
@@ -68,7 +70,7 @@ python Thala_rescue_PBS.py
 
 The `Thala_rescue_PBS.py` will create for each sample a PBS file
 
-## Step 3
+### Step 3
 
 Modify submit.sh(step-by-step, change the target PBS scripts)
 
@@ -81,7 +83,7 @@ sh submit.sh
 - Step 1: Run `Thalassemia.py`
 - Step 2: Run `Thala_Rescue_phase2_Step1_RunHC_model.pbs`
 
-## Step 4 (From the original repo)
+### Step 4 (From the original repo)
 
 Do joint genotyping & hard filtering
 
@@ -92,7 +94,7 @@ cd ./Joint
 qsub Thala_Rescue_phase2_Step3_HardFiltering.pbs
 ```
 
-## Step 5 (From the original repo)
+### Step 5 (From the original repo)
 
 Find current known thalassaemia causal mutations based on HbVar and ITHANET. We have created collections from these databases, and you just running the follwing commands to pick these mutations out.
 
