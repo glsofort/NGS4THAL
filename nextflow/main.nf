@@ -14,8 +14,9 @@ def ch_references_dir   = Channel.fromPath("${references_dir}/${genome_ref_dir}/
 def ch_dbsnp            = Channel.fromPath(["${references_dir}/${dbsnp}", "${references_dir}/${dbsnp}.idx"])
 def ch_sentieon_dir     = Channel.fromPath("${sentieon_dir}", type: 'any', hidden: true)
 
-include { FILTER_BAM    } from './modules/filter_bam'
-include { REALIGNED_BAM } from './modules/realigned_bam'
+include { FILTER_BAM        } from './modules/filter_bam'
+include { REALIGNED_BAM     } from './modules/realigned_bam'
+include { HAPLOTYPE_CALLER  } from './modules/haplotype_caller'
 
 workflow NGS4THAL {
     if (params.skip_filter) {
