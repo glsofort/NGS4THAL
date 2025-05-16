@@ -25,6 +25,7 @@ process HAPLOTYPE_CALLER {
 
     """
     ${sentieon} driver \
+        -t ${threads} \
         -r ${fasta} \
         -i ${in_bam} \
         --algo Haplotyper \
