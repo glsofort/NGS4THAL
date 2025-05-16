@@ -2,3 +2,4 @@
 work/*
 outdir/*
 samples/*
+.nextflow.log*
