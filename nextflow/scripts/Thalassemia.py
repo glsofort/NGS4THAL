@@ -31,7 +31,7 @@ if __name__ == "__main__":
         chr16_pos2 = 230000
         chr11_pos1 = 5269000
         chr11_pos2 = 5278000
-    elif assembly_version == "GRCh38":
+    elif assembly_version == "hg38":
         chr16 = "chr16"
         chr11 = "chr11"
         chr16_pos1 = 150001
@@ -49,6 +49,6 @@ if __name__ == "__main__":
 
     probability = 0.5
     RescueMARReads(path2bam, path2outputfile,
-                   probability, hemoglobin_rescue_set)
+                   probability, hemoglobin_rescue_set, assembly=assembly_version)
 else:
     pass

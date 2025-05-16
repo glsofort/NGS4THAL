@@ -26,7 +26,7 @@ import os
 from BamOPR import *
 
 
-def EstimateInsertSize(path2bam, chromosome="chr16", start_pos=135000, stop_pos=230000, MAQ=60):
+def EstimateInsertSize(path2bam, chromosome="16", start_pos=135000, stop_pos=230000, MAQ=60, assembly="hg19"):
     """
     Description: Use high quality alignments to estimate insert size mean and SD for the NGS library
     Input:
@@ -36,6 +36,9 @@ def EstimateInsertSize(path2bam, chromosome="chr16", start_pos=135000, stop_pos=
     Return:
          a turple contains (Mean_InsertSize(float), Std_InsertSize(float))
     """
+
+    if assembly == "hg38":
+        chromosome = "chr" + chromosome
 
     samfile = pysam.AlignmentFile(path2bam, "rb")
     chr_sam = samfile.fetch(chromosome, start=start_pos, end=stop_pos)
@@ -86,7 +89,7 @@ def RescueSet(path2bam, chromosome, start_pos, stop_pos):
     return rescue_set
 
 
-def RescueMARReads(path2bam, path2newbam, probability, rescue_set):
+def RescueMARReads(path2bam, path2newbam, probability, rescue_set, assembly):
     """
     Description: Rescue reads in MAR(multiple alignment region)
     Dependency: def EstimateInsertSize
@@ -98,7 +101,7 @@ def RescueMARReads(path2bam, path2newbam, probability, rescue_set):
     Return:
           1
     """
-    Mean_InsertSize, Std_InsertSize = EstimateInsertSize(path2bam)
+    Mean_InsertSize, Std_InsertSize = EstimateInsertSize(path2bam, assembly=assembly)
     samfile = pysam.AlignmentFile(path2bam, "rb")
 # round 1 -----------------------rescue R1----------------------------------
     # rescue R1 now, and write to "R1_mid_outputsamfile"

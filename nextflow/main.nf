@@ -13,10 +13,11 @@ workflow NGS4THAL {
     if (params.skip_filter) {
         ch_filtered_bam = ch_input
     } else {
-        ch_filtered_bam = FILTER_BAM(
+        FILTER_BAM(
             ch_input,
             ch_bed
-        ).out.bam
+        )
+        ch_filtered_bam = FILTER_BAM.out.bam
     }
 
     REALIGNED_BAM(
