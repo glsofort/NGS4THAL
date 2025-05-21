@@ -1,4 +1,4 @@
-process GENOTYPING {
+process HARD_FILTERING {
     tag "${meta.id}-cpus:${task.cpus}"
     label 'process_large'
     label 'publish'
@@ -11,7 +11,7 @@ process GENOTYPING {
     path(sentieon_dir)
 
     output:
-    tuple val(meta), path(out_vcf_gz), path(out_vcf_tbi), emit: vcf
+    tuple val(meta), path(out_vcf_gz), path(out_vcf_tbi), emit: gvcf
 
     script:
     def fasta       = meta.fasta
@@ -25,13 +25,12 @@ process GENOTYPING {
 
     """
     ${sentieon} driver \
+        -t ${threads} \
         -r ${fasta} \
-        --algo GVCFtyper \
-        ${in_vcf_gz} \
+        -i ${in_bam} \
+        --algo Haplotyper \
+        --emit_mode gvcf \
         --dbsnp ${dbsnp} \
-        ${out_vcf}
-
-    bgzip -cf ${out_vcf} > ${out_vcf_gz}
-    tabix -f ${out_vcf_gz}
+        ${out_vcf_gz}
     """
 }
