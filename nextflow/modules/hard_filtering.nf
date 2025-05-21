@@ -46,13 +46,13 @@ process HARD_FILTERING {
 
     """
     # Split joint VCF
-    vcftools --vcf ${in_vcf_gz} \
+    vcftools --gzvcf ${in_vcf_gz} \
         --remove-indels \
         --recode \
         --recode-INFO-all \
         --out ${snp_prefix}
 
-    vcftools --vcf ${in_vcf_gz} \
+    vcftools --gzvcf ${in_vcf_gz} \
         --keep-only-indels \
         --recode-INFO-all \
         --recode \
@@ -67,9 +67,6 @@ process HARD_FILTERING {
         --var_filter_expression "QD < 2.0 || MQ < 40.0 || FS > 60.0 || SOR > 3.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0" \
         ${snp_filtered}
 
-    bgzip -cf ${snp_filtered} > ${snp_filtered_gz}
-    tabix ${snp_filtered_gz}
-
     # INDEL hard filtering
     ${sentieon} driver \
         -r ${fasta} \
@@ -79,11 +76,9 @@ process HARD_FILTERING {
         --var_filter_expression "QD < 2.0 || ReadPosRankSum < -8.0 || FS > 200.0 || SOR > 10.0" \
         ${indel_filtered}
     
-    bgzip -cf ${indel_filtered} > ${indel_filtered_gz}
-    tabix ${indel_filtered_gz}
 
     # Create final result
-    vcftools --vcf ${snp_filtered_gz} \
+    vcftools --vcf ${snp_filtered} \
         --remove-filtered-all \
         --recode \
         --recode-INFO-all \
@@ -92,7 +87,7 @@ process HARD_FILTERING {
     bgzip -cf ${snp_out_vcf} > ${snp_out_vcf_gz}
     tabix ${snp_out_vcf_gz}
 
-    vcftools --vcf ${indel_filtered_gz} \
+    vcftools --vcf ${indel_filtered} \
         --remove-filtered-all \
         --recode \
         --recode-INFO-all \
