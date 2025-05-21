@@ -18,6 +18,7 @@ def ch_sentieon_dir     = Channel.fromPath("${sentieon_dir}", type: 'any', hidde
 include { FILTER_BAM        } from './modules/filter_bam'
 include { REALIGNED_BAM     } from './modules/realigned_bam'
 include { HAPLOTYPE_CALLER  } from './modules/haplotype_caller'
+include { GENOTYPING        } from './modules/genotyping'
 
 workflow NGS4THAL {
     if (params.skip_filter) {
@@ -37,6 +38,13 @@ workflow NGS4THAL {
 
     HAPLOTYPE_CALLER(
         REALIGNED_BAM.out.bam,
+        ch_dbsnp.collect(),
+        ch_references_dir.collect(),
+        ch_sentieon_dir
+    )
+
+    GENOTYPING(
+        HAPLOTYPE_CALLER.out.gvcf,
         ch_dbsnp.collect(),
         ch_references_dir.collect(),
         ch_sentieon_dir
