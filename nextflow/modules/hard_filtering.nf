@@ -6,9 +6,6 @@ process HARD_FILTERING {
 
     input:
     tuple val(meta), path(in_vcf_gz), path(in_vcf_tbi)
-    tuple path(dbsnp), path(dbsnp_index)
-    path(fasta_dir)
-    path(sentieon_dir)
 
     output:
     tuple val(meta), path(snp_out_vcf_gz), path(out_vcf_tbi), emit: snp_vcf
@@ -59,23 +56,22 @@ process HARD_FILTERING {
         --out ${indel_prefix}
 
     # SNP hard filtering
-    ${sentieon} driver \
-        -r ${fasta} \
-        -v ${snp_recode_vcf} \
-        --algo VariantFiltration \
-        --var_filter_name "FAILED" \
-        --var_filter_expression "QD < 2.0 || MQ < 40.0 || FS > 60.0 || SOR > 3.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0" \
-        ${snp_filtered}
+    bcftools filter \
+        -e "QD < 2.0 || MQ < 40.0 || FS > 60.0 || SOR > 3.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0" \
+        -s "FAILED" \
+        -m+ \
+        -Ov \
+        -o ${snp_filtered} \
+        ${snp_recode_vcf}
 
     # INDEL hard filtering
-    ${sentieon} driver \
-        -r ${fasta} \
-        -v ${indel_recode_vcf} \
-        --algo VariantFiltration \
-        --var_filter_name "FAILED" \
-        --var_filter_expression "QD < 2.0 || ReadPosRankSum < -8.0 || FS > 200.0 || SOR > 10.0" \
-        ${indel_filtered}
-    
+    bcftools filter \
+        -e "QD < 2.0 || ReadPosRankSum < -8.0 || FS > 200.0 || SOR > 10.0" \
+        -s "FAILED" \
+        -m+ \
+        -Ov \
+        -o ${indel_filtered} \
+        ${indel_recode_vcf}
 
     # Create final result
     vcftools --vcf ${snp_filtered} \
