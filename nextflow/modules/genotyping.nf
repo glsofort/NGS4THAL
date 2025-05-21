@@ -27,7 +27,7 @@ process GENOTYPING {
     ${sentieon} driver \
         -r ${fasta} \
         --algo GVCFtyper \
-        ${in_vcf_gz} \
+        -v ${in_vcf_gz} \
         --dbsnp ${dbsnp} \
         ${out_vcf}
 
