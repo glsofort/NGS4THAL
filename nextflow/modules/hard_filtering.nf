@@ -15,7 +15,6 @@ process HARD_FILTERING {
     def fasta               = meta.fasta
     def prefix              = task.ext.prefix ?: "${meta.id}"
     def threads             = task.cpus
-    def sentieon            = "${sentieon_dir}/bin/sentieon"
 
     // SNP
     def snp_prefix          = "${prefix}.snp"
