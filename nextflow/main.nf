@@ -52,10 +52,7 @@ workflow NGS4THAL {
     )
 
     HARD_FILTERING(
-        GENOTYPING.out.vcf,
-        ch_dbsnp.collect(),
-        ch_references_dir.collect(),
-        ch_sentieon_dir
+        GENOTYPING.out.vcf
     )
 }
 
