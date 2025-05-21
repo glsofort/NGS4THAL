@@ -1,0 +1,71 @@
+#!/bin/bash
+#PBS -N Find_Thal_causal
+#PBS -l mem=40g,nodes=1:ppn=10,walltime=18:00:00
+#PBS -q queue_name_here
+#PBS -m abe -M youremail_address_here
+#PBS -o Thal_Causal.out
+#PBS -e Thal_Causal.err
+#PBS -V
+
+wkd=/home/data/thala_project/Rescue_Phase
+vcff=$wkd/VCF_file
+
+VCFTOOLS=/path/to/vcftools_path
+BCFTOOLS=/path/to/bcftools_path
+
+cd $vcff/Joint
+
+# merge two pass vcfs and get the High_quality_variants.vcf
+awk '{if(/#/){} else{print}}'  $vcff/Joint/PASS_INDEL.recode.vcf > $vcff/Joint/pass_indel
+
+cat $vcff/Joint/PASS_SNP.recode.vcf $vcff/Joint/pass_indel | awk '$1 ~ /^#/ {print $0;next} {print $0 | "sort -k1,1 -k2,2n"}' > $vcff/Joint/High_quality_variants.vcf
+
+$BCFTOOLS norm -m -"both" --fasta-ref $wkd/Thala_Rescue_workflow/Known_Causal_Mutation/chr11_16.fa $vcff/Joint/High_quality_variants.vcf -o $vcff/Joint/normed_High_quality_variants.vcf
+
+#############Causal point mutation################
+
+$VCFTOOLS --vcf $vcff/Joint/normed_High_quality_variants.vcf \
+          --diff $wkd/Thala_Rescue_workflow/Known_Causal_Mutation/sorted_Causal_SNV_Thala_with_equivalent.vcf \
+          --diff-site \
+          --not-chr chr2 \
+          --not-chr chr6 \
+          --not-chr chrX \
+          --not-chr chr19
+
+awk '{if($2==$3){print $1,$2}}' $vcff/Joint/out.diff.sites_in_files > $vcff/Joint/Both_SNP_position.list
+
+$VCFTOOLS --vcf $vcff/Joint/normed_High_quality_variants.vcf --positions $vcff/Joint/Both_SNP_position.list --out $vcff/Joint/Candidate_SNP --recode --recode-INFO-all
+
+python $wkd/Thala_Rescue_workflow/Known_Causal_Mutation/Find_Causal.py -input $vcff/Joint/Candidate_SNP.recode.vcf -mutation "SNP"
+
+cd $vcff/Joint/ind_vcf_SNP
+
+cat pre* > Thalassaemia.SNP.PRE
+
+mkdir Precessing_data
+mv ./*txt ./Precessing_data
+mv ./pre* ./Precessing_data
+
+############
+######################Causal InDels####################
+cd $vcff/Joint/
+$VCFTOOLS --vcf $vcff/Joint/normed_High_quality_variants.vcf \
+         --keep-only-indels \
+         --recode \
+         --recode-INFO-all \
+         --out $vcff/Joint/indel_normed_High_quality_variants
+
+awk 'NR==FNR{if(/#/){}else {a[$1"_"$2]=$3}} NR>FNR{if(/#/){}else{if(a[$1"_"$2]){print $1, $2}}}' $wkd/Thala_Rescue_workflow/Known_Causal_Mutation/sorted_normed_Causal_Indel_Thala_with_equivalent.vcf $vcff/Joint/indel_normed_High_quality_variants.recode.vcf > $vcff/Joint/Both_indel_position.list
+
+
+$VCFTOOLS --vcf $vcff/Joint/normed_High_quality_variants.vcf --positions $vcff/Joint/Both_indel_position.list --out $vcff/Joint/Candidate_INDEL --recode --recode-INFO-all
+
+python $wkd/Thala_Rescue_workflow/Known_Causal_Mutation/Find_Causal.py -input $vcff/Joint/Candidate_INDEL.recode.vcf -mutation "InDel"
+
+cd $vcff/Joint/ind_vcf_INDEL
+
+cat pre* > Thalassaemia.INDEL.PRE
+
+mkdir Precessing_data
+mv ./*txt ./Precessing_data
+mv ./pre* ./Precessing_data

@@ -8,8 +8,8 @@ process HARD_FILTERING {
     tuple val(meta), path(in_vcf_gz), path(in_vcf_tbi)
 
     output:
-    tuple val(meta), path(snp_out_vcf_gz), path(out_vcf_tbi), emit: snp_vcf
-    tuple val(meta), path(out_vcf_gz), path(out_vcf_tbi), emit: indel_vcf
+    tuple val(meta), path(snp_out_vcf_gz), path(snp_out_vcf_tbi), emit: snp_vcf
+    tuple val(meta), path(indel_out_vcf_gz), path(indel_out_vcf_tbi), emit: indel_vcf
 
     script:
     def fasta               = meta.fasta
@@ -29,8 +29,8 @@ process HARD_FILTERING {
     def indel_filtered_gz   = "${indel_filtered}.gz"
 
 
-    def snp_out_prefix      = "${snp_prefix}.pass"
-    def indel_out_prefix    = "${indel_prefix}.pass"
+    def snp_out_prefix      = "${snp_prefix}.final"
+    def indel_out_prefix    = "${indel_prefix}.final"
 
     snp_out_vcf             = "${snp_out_prefix}.recode.vcf"
     snp_out_vcf_gz          = "${snp_out_vcf}.gz"
