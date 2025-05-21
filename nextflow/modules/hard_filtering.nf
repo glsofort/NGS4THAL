@@ -11,26 +11,94 @@ process HARD_FILTERING {
     path(sentieon_dir)
 
     output:
-    tuple val(meta), path(out_vcf_gz), path(out_vcf_tbi), emit: gvcf
+    tuple val(meta), path(snp_out_vcf_gz), path(out_vcf_tbi), emit: snp_vcf
+    tuple val(meta), path(out_vcf_gz), path(out_vcf_tbi), emit: indel_vcf
 
     script:
-    def fasta       = meta.fasta
-    def prefix      = task.ext.prefix ?: "${meta.id}"
-    def threads     = task.cpus
-    def sentieon    = "${sentieon_dir}/bin/sentieon"
+    def fasta               = meta.fasta
+    def prefix              = task.ext.prefix ?: "${meta.id}"
+    def threads             = task.cpus
+    def sentieon            = "${sentieon_dir}/bin/sentieon"
 
-    out_vcf         = "${prefix}.vcf"
-    out_vcf_gz      = "${prefix}.vcf.gz"
-    out_vcf_tbi     = "${prefix}.vcf.gz.tbi"
+    // SNP
+    def snp_prefix          = "${prefix}.snp"
+    def snp_recode_vcf      = "${snp_prefix}.recode.vcf"
+    def snp_filtered        = "${snp_prefix}.filtered.vcf"
+    def snp_filtered_gz     = "${snp_filtered}.gz"
+
+    // INDEL
+    def indel_prefix        = "${prefix}.indel"
+    def indel_recode_vcf    = "${indel_prefix}.recode.vcf"
+    def indel_filtered      = "${prefix}.filtered.vcf"
+    def indel_filtered_gz   = "${indel_filtered}.gz"
+
+
+    def snp_out_prefix      = "${snp_prefix}.pass"
+    def indel_out_prefix    = "${indel_prefix}.pass"
+
+    snp_out_vcf             = "${snp_out_prefix}.recode.vcf"
+    snp_out_vcf_gz          = "${snp_out_vcf}.gz"
+    snp_out_vcf_tbi         = "${snp_out_vcf}.gz.tbi"
+
+    indel_out_vcf           = "${indel_out_prefix}.recode.vcf"
+    indel_out_vcf_gz        = "${indel_out_vcf}.gz"
+    indel_out_vcf_tbi       = "${indel_out_vcf}.gz.tbi"
 
     """
+    # Split joint VCF
+    vcftools --vcf ${in_vcf_gz} \
+        --remove-indels \
+        --recode \
+        --recode-INFO-all \
+        --out ${snp_prefix}
+
+    vcftools --vcf ${in_vcf_gz} \
+        --keep-only-indels \
+        --recode-INFO-all \
+        --recode \
+        --out ${indel_prefix}
+
+    # SNP hard filtering
     ${sentieon} driver \
-        -t ${threads} \
         -r ${fasta} \
-        -i ${in_bam} \
-        --algo Haplotyper \
-        --emit_mode gvcf \
-        --dbsnp ${dbsnp} \
-        ${out_vcf_gz}
+        -v ${snp_recode_vcf} \
+        --algo VariantFiltration \
+        --var_filter_name "FAILED" \
+        --var_filter_expression "QD < 2.0 || MQ < 40.0 || FS > 60.0 || SOR > 3.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0" \
+        ${snp_filtered}
+
+    bgzip -cf ${snp_filtered} > ${snp_filtered_gz}
+    tabix ${snp_filtered_gz}
+
+    # INDEL hard filtering
+    ${sentieon} driver \
+        -r ${fasta} \
+        -v ${indel_recode_vcf} \
+        --algo VariantFiltration \
+        --var_filter_name "FAILED" \
+        --var_filter_expression "QD < 2.0 || ReadPosRankSum < -8.0 || FS > 200.0 || SOR > 10.0" \
+        ${indel_filtered}
+    
+    bgzip -cf ${indel_filtered} > ${indel_filtered_gz}
+    tabix ${indel_filtered_gz}
+
+    # Create final result
+    vcftools --vcf ${snp_filtered_gz} \
+        --remove-filtered-all \
+        --recode \
+        --recode-INFO-all \
+        --out ${snp_out_prefix}
+
+    bgzip -cf ${snp_out_vcf} > ${snp_out_vcf_gz}
+    tabix ${snp_out_vcf_gz}
+
+    vcftools --vcf ${indel_filtered_gz} \
+        --remove-filtered-all \
+        --recode \
+        --recode-INFO-all \
+        --out ${indel_out_prefix}
+
+    bgzip -cf ${indel_out_vcf} > ${indel_out_vcf_gz}
+    tabix ${indel_out_vcf_gz}
     """
 }
