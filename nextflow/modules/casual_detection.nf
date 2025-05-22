@@ -30,6 +30,9 @@ process CASUAL_DETECTION {
     def snp_cand_prefix     = "snp.candidate"
     def snp_cand_vcf        = "${snp_cand_prefix}.recode.vcf"
 
+    def snp_out_prefix      = "${prefix}.snp"
+    def indel_out_prefix    = "${prefix}.indel"
+
     snp_out_vcf             = "${snp_out_prefix}.recode.vcf"
     snp_out_vcf_gz          = "${snp_out_vcf}.gz"
     snp_out_vcf_tbi         = "${snp_out_vcf}.gz.tbi"
