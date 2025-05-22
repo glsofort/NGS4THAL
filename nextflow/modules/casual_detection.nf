@@ -51,7 +51,7 @@ process CASUAL_DETECTION {
         -o ${high_qual_norm_vcf}
     
     #############Causal SNV mutation################
-    vcftools --vcf $${high_qual_norm_vcf} \
+    vcftools --vcf ${high_qual_norm_vcf} \
           --diff ${sorted_casual_snv_vcf} \
           --diff-site \
           --not-chr 2 \
