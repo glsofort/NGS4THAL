@@ -44,13 +44,13 @@ process CASUAL_DETECTION {
     """
     # Merge SNP & INDEL to get the high quality variants
     bcftools concat -a ${snp_in_vcf_gz} ${indel_in_vcf_gz} | \
-    bcftools sort -o ${high_quality_vcf}
+    bcftools sort -o ${high_qual_vcf}
 
     # Normalization
     bcftools norm \
         -m -"both" \
         --fasta-ref ${fasta} \
-        ${high_quality_vcf} \
+        ${high_qual_vcf} \
         -o ${high_qual_norm_vcf}
     
     #############Causal SNV mutation################
