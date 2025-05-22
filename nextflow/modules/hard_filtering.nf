@@ -2,7 +2,6 @@ process HARD_FILTERING {
     tag "${meta.id}-cpus:${task.cpus}"
     label 'process_large'
     label 'publish'
-    label 'sentieon'
 
     input:
     tuple val(meta), path(in_vcf_gz), path(in_vcf_tbi)

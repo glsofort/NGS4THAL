@@ -15,11 +15,15 @@ def ch_references_dir   = Channel.fromPath("${references_dir}/${genome_ref_dir}/
 def ch_dbsnp            = Channel.fromPath(["${references_dir}/${dbsnp}", "${references_dir}/${dbsnp}.idx"])
 def ch_sentieon_dir     = Channel.fromPath("${sentieon_dir}", type: 'any', hidden: true)
 
+def ch_casual_snv_vcf   = Channel.fromPath("${projectDir}/assets/sorted_casual_snv.vcf", type: 'any', hidden: true)
+def ch_casual_indel_vcf = Channel.fromPath("${projectDir}/assets/sorted_casual_indel.vcf", type: 'any', hidden: true)
+
 include { FILTER_BAM        } from './modules/filter_bam'
 include { REALIGNED_BAM     } from './modules/realigned_bam'
 include { HAPLOTYPE_CALLER  } from './modules/haplotype_caller'
 include { GENOTYPING        } from './modules/genotyping'
 include { HARD_FILTERING    } from './modules/hard_filtering'
+include { CASUAL_DETECTION  } from './modules/casual_detection'
 
 workflow NGS4THAL {
     if (params.skip_filter) {
@@ -53,6 +57,15 @@ workflow NGS4THAL {
 
     HARD_FILTERING(
         GENOTYPING.out.vcf
+    )
+
+    CASUAL_DETECTION(
+        HARD_FILTERING.out.snp_vcf,
+        HARD_FILTERING.out.indel_vcf,
+        ch_references_dir.collect(),
+        ch_scripts_dir.collect(),
+        ch_casual_snv_vcf,
+        ch_casual_indel_vcf
     )
 }
 
