@@ -2,7 +2,6 @@ import sys
 import os
 import argparse
 import pandas as pd
-from Find_Causal import *
 import argparse
 
 parser = argparse.ArgumentParser()
