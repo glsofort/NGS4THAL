@@ -67,10 +67,8 @@ process CAUSAL_DETECTION {
     vcftools --vcf ${high_qual_norm_vcf} \
           --diff ${sorted_causal_snv_vcf} \
           --diff-site \
-          --not-chr 2 \
-          --not-chr 6 \
-          --not-chr X \
-          --not-chr 19
+          --chr 1 \
+          --chr 16
 
     awk '{if(\$2==\$3){print \$1,\$2}}' ${out_diff_sites} > ${snp_position_list}
 
