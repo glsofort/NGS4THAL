@@ -96,9 +96,9 @@ process CAUSAL_DETECTION {
 
     vcftools --vcf ${high_qual_norm_vcf} --positions ${indel_position_list} --out ${indel_cand_prefix} --recode --recode-INFO-all
 
-    python3 ${find_causal_script} -input ${indel_cand_vcf} -mutation "InDel" -knowncausal ${sorted_causal_indel_vcf} -outdir ${indel_out_dir}
+    python3 ${find_causal_script} -input ${indel_cand_vcf} -mutation "InDel" -knowncausal ${sorted_causal_indel_vcf} -outdir ${indel_outdir}
 
-    cat ${indel_out_dir}/pre* > Thalassaemia.INDEL.PRE
+    cat ${indel_outdir}/pre* > Thalassaemia.INDEL.PRE
 
     touch 123
     """
