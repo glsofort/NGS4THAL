@@ -9,7 +9,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-input", "--inputvcf")
 parser.add_argument("-output", "--outputtxt")
 parser.add_argument("-mutation", "--mutationtype")
-parser.add_argument("-kc", "--knowncasual")
+parser.add_argument("-outdir", "--outdir")
+parser.add_argument("-kc", "--knowncausal")
 args = parser.parse_args()
 
 
@@ -158,7 +159,7 @@ if __name__ == "__main__":
         # SNP
         pseudo_vcf_file = "pseudo_candidate_SNP.recode.vcf"
         F_Create_pseudo_vcf(inputvcf=inputvcf, outputvcf=pseudo_vcf_file)
-        Causal_SNV_F = "ind_vcf_SNP"
+        Causal_SNV_F = args.outdir
         os.mkdir(Causal_SNV_F)
         samplenamelists = []
         samplecount = []
@@ -166,7 +167,7 @@ if __name__ == "__main__":
             vcffile=pseudo_vcf_file, outputfolder=Causal_SNV_F
         )
 
-        knowncausalSNV = args.knowncasual
+        knowncausalSNV = args.knowncausal
         for i in samplenamelists:
             samplefile = Causal_SNV_F + "/" + i + ".txt"
             outputfile = Causal_SNV_F + "/" + "pre." + i
@@ -177,7 +178,7 @@ if __name__ == "__main__":
         # indel
         pseudo_vcf_file = "pseudo_candidate_INDEL.recode.vcf"
         F_Create_pseudo_vcf(inputvcf=inputvcf, outputvcf=pseudo_vcf_file)
-        Causal_INDEL_F = "ind_vcf_INDEL"
+        Causal_INDEL_F = args.outdir
         os.mkdir(Causal_INDEL_F)
         samplenamelists = []
         samplecount = []
@@ -185,7 +186,7 @@ if __name__ == "__main__":
             vcffile=pseudo_vcf_file, outputfolder=Causal_INDEL_F
         )
 
-        knowncausalINDEL = args.knowncasual
+        knowncausalINDEL = args.knowncausal
         for i in samplenamelists:
             samplefile = Causal_INDEL_F + "/" + i + ".txt"
             outputfile = Causal_INDEL_F + "/" + "pre." + i

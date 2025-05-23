@@ -1,4 +1,4 @@
-process CASUAL_DETECTION {
+process CAUSAL_DETECTION {
     tag "${meta.id}-cpus:${task.cpus}"
     label 'process_large'
     label 'publish'
@@ -8,8 +8,8 @@ process CASUAL_DETECTION {
     tuple val(meta), path(indel_in_vcf_gz), path(indel_in_vcf_tbi)
     path(fasta_dir)
     path(script_dir)
-    path(sorted_casual_snv_vcf)
-    path(sorted_casual_indel_vcf)
+    path(sorted_causal_snv_vcf)
+    path(sorted_causal_indel_vcf)
 
     output:
     path("123")
@@ -19,19 +19,29 @@ process CASUAL_DETECTION {
     def prefix              = task.ext.prefix ?: "${meta.id}"
     def threads             = task.cpus
     
-    def find_casual_script  = "find_casual.py"
+    def find_causal_script  = "find_causal.py"
 
     def high_qual_vcf       = "high_quality.vcf"
     def high_qual_norm_vcf  = "high_quality.norm.vcf"
 
     def out_diff_sites      = "out.diff.sites_in_files"
 
+    def indel_norm_hq       = "indel.normed"
+    def indel_norm_hq_vcf   = "${indel_norm_hq}.recode.vcf"
+
     def snp_position_list   = "snp.positions.txt"
     def snp_cand_prefix     = "snp.candidate"
     def snp_cand_vcf        = "${snp_cand_prefix}.recode.vcf"
 
+    def indel_position_list   = "indel.positions.txt"
+    def indel_cand_prefix     = "indel.candidate"
+    def indel_cand_vcf        = "${indel_cand_prefix}.recode.vcf"
+
     def snp_out_prefix      = "${prefix}.snp"
     def indel_out_prefix    = "${prefix}.indel"
+
+    def snp_outdir          = "SNP-out"
+    def indel_outdir        = "INDEL-out"
 
     snp_out_vcf             = "${snp_out_prefix}.recode.vcf"
     snp_out_vcf_gz          = "${snp_out_vcf}.gz"
@@ -55,7 +65,7 @@ process CASUAL_DETECTION {
     
     #############Causal SNV mutation################
     vcftools --vcf ${high_qual_norm_vcf} \
-          --diff ${sorted_casual_snv_vcf} \
+          --diff ${sorted_causal_snv_vcf} \
           --diff-site \
           --not-chr 2 \
           --not-chr 6 \
@@ -70,7 +80,25 @@ process CASUAL_DETECTION {
         --recode \
         --recode-INFO-all
 
-    python3 ${find_casual_script} -input ${snp_cand_vcf} -mutation "SNP" -knowncasual ${sorted_casual_snv_vcf}
+    python3 ${find_causal_script} -input ${snp_cand_vcf} -mutation "SNP" -knowncausal ${sorted_causal_snv_vcf} -outdir ${snp_outdir}
+
+    cat ${snp_outdir}/pre* > Thalassaemia.SNP.PRE
+
+    ######################Causal InDels####################
+    vcftools --vcf ${high_qual_norm_vcf} \
+            --keep-only-indels \
+            --recode \
+            --recode-INFO-all \
+            --out ${indel_norm_hq}
+
+    awk 'NR==FNR{if(/#/){}else {a[\$1"_"\$2]=\$3}} NR>FNR{if(/#/){}else{if(a[\$1"_"\$2]){print \$1, \$2}}}' ${sorted_causal_indel_vcf} ${indel_norm_hq_vcf} > ${indel_position_list}
+
+
+    vcftools --vcf ${high_qual_norm_vcf} --positions ${indel_position_list} --out ${indel_cand_prefix} --recode --recode-INFO-all
+
+    python3 ${find_causal_script} -input ${indel_cand_vcf} -mutation "InDel" -knowncausal ${sorted_causal_indel_vcf} -outdir ${indel_out_dir}
+
+    cat ${indel_out_dir}/pre* > Thalassaemia.INDEL.PRE
 
     touch 123
     """
