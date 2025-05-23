@@ -9,7 +9,7 @@ parser.add_argument("-input", "--inputvcf")
 parser.add_argument("-output", "--outputtxt")
 parser.add_argument("-mutation", "--mutationtype")
 parser.add_argument("-outdir", "--outdir")
-parser.add_argument("-kc", "--knowncausal")
+parser.add_argument("-knowncausal")
 args = parser.parse_args()
 
 
