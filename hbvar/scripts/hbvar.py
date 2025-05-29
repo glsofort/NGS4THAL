@@ -221,10 +221,10 @@ def export_vcf(data, output, genome="hg19"):
 
             # Build INFO string
             info_parts = [
-                f'HbVar_num={item["hbvar_id"].strip().replace(" ", "<s>").replace(";",",")}',
-                f'Hb_name={item["hbvar_name"].strip().replace(" ", "<s>").replace(";",",")}',
-                f'HGVS_name={item["hbvar_hgvsname"].strip().replace(" ", "<s>").replace(";",",")}',
-                f'type={item["hbvar_mutation_type"].strip().replace(" ", "<s>").replace(";",",")}',
+                f'HbVar_num={item["hbvar_id"].strip().replace(" ", "_").replace(";",",")}',
+                f'Hb_name={item["hbvar_name"].strip().replace(" ", "_").replace(";",",")}',
+                f'HGVS_name={item["hbvar_hgvsname"].strip().replace(" ", "_").replace(";",",")}',
+                f'type={item["hbvar_mutation_type"].strip().replace(" ", "_").replace(";",",")}',
             ]
             info_str = ";".join(info_parts) if info_parts else NAS
 
