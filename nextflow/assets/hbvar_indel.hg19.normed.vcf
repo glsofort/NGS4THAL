@@ -8,9 +8,9 @@
 ##contig=<ID=16,length=90354753,assembly=b37>
 ##reference=file://hs37d5.fa
 ##bcftools_concatVersion=1.13+htslib-1.13+ds
-##bcftools_concatCommand=concat -a hbvar_insertions.vcf.gz hbvar_deletions.vcf.gz; Date=Wed May 28 04:44:38 2025
+##bcftools_concatCommand=concat -a hbvar_insertions.vcf.gz hbvar_deletions.vcf.gz; Date=Thu May 29 04:42:18 2025
 ##bcftools_normVersion=1.13+htslib-1.13+ds
-##bcftools_normCommand=norm -cs -m -both --fasta-ref /data/GL/database/sentieon/GRCh37/references/hs37d5/hs37d5.fa -o hbvar_indel.normed.vcf.gz hbvar_indel.vcf.gz; Date=Wed May 28 04:44:38 2025
+##bcftools_normCommand=norm -cs -m -both --fasta-ref /data/GL/database/sentieon/GRCh37/references/hs37d5/hs37d5.fa -o hbvar_indel.normed.vcf.gz hbvar_indel.vcf.gz; Date=Thu May 29 04:42:18 2025
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
 11	5246711	HbVar.2721	GTT	G	.	.	HbVar_num=HbVar.2721;Hb_name=Poly_A_(-AA);HGVS_name=HBB:c.*111_*112delAA;type=deletions
 11	5246713	HbVar.973	TTTTTA	T	.	.	HbVar_num=HbVar.973;Hb_name=Poly_A_(-AATAA),_AATAAA->-----A_beta+;HGVS_name=HBB:c.*108_*112delAATAA;type=deletions

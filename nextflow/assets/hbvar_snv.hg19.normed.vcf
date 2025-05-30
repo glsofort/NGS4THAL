@@ -8,7 +8,7 @@
 ##contig=<ID=16,length=90354753,assembly=b37>
 ##reference=file://hs37d5.fa
 ##bcftools_normVersion=1.13+htslib-1.13+ds
-##bcftools_normCommand=norm -cs -m -both --fasta-ref /data/GL/database/sentieon/GRCh37/references/hs37d5/hs37d5.fa -o hbvar_snv.normed.vcf.gz hbvar_substitution.vcf.gz; Date=Wed May 28 04:45:19 2025
+##bcftools_normCommand=norm -cs -m -both --fasta-ref /data/GL/database/sentieon/GRCh37/references/hs37d5/hs37d5.fa -o hbvar_snv.normed.vcf.gz hbvar_substitution.vcf.gz; Date=Thu May 29 04:42:25 2025
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
 11	5246595	HbVar.2887	C	G	.	.	HbVar_num=HbVar.2887;Hb_name=3'UTR_+101_G>C;HGVS_name=HBB:c.*233G>C;type=substitution
 11	5246715	HbVar.971	T	C	.	.	HbVar_num=HbVar.971;Hb_name=Poly_A_(A->G),_AATAAA->AATAAG_beta+;HGVS_name=HBB:c.*113A>G;type=substitution
