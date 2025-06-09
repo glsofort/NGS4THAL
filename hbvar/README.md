@@ -76,10 +76,15 @@ vcftools --vcf results/hbvar_insertions.vcf \
 
 ```bash
 python3 test.py --hgvsc "NM_000348.4:c.680G>A"
+python3 test.py --hgvsc "NM_000348.4:c.677G>A"
 python3 test.py --hgvsc "NM_000152:c.2065G>A"
 python3 test.py --hgvsc "NM_000517:c.19G>T"
 
 python3 test.py --hgvsc "NC_000002.12:g.31529325C>T"
+python3 test.py --hgvsc "12:g.31529325C>T"
 
-python3 test.py --variant "2:31754395:C>T" --transcript NM_000348.4
+python3 test.py --variant "2:31754395:C>T" --transcript "NM_000348.4"
+
+./ldHgGene -gtf -genePredExt -out=out.pred null null hs37d5_compatible.gtf
+sed -f conversion.sed GRCh37_latest_genomic.gtf > hs37d5_compatible.gtf
 ```

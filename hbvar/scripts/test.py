@@ -9,10 +9,10 @@ logging.basicConfig(format="%(asctime)s %(levelname)s: %(message)s")
 logger = logging.getLogger(__file__)
 logger.setLevel(logging.INFO)
 
-fasta_file =  "/data/GL/database/autopvs1/hg19_no_chr.fa"
-# fasta_file = "/data/GL/database/sentieon/GRCh37/references/hs37d5/hs37d5.fa"
+# fasta_file =  "/data/GL/database/autopvs1/hg19_no_chr.fa"
+fasta_file = "/data/GL/database/sentieon/GRCh37/references/hs37d5/hs37d5.fa"
 # transcript_file = "/data/GL/database/UCSC/refGene_nochr.txt"
-transcript_file = "test.pred"
+transcript_file = "out.pred"
 
 # Load transcripts
 with open(transcript_file) as infile:

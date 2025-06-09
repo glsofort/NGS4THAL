@@ -14,6 +14,7 @@ def ch_scripts_dir      = Channel.fromPath("${projectDir}/scripts/*", type: 'any
 def ch_references_dir   = Channel.fromPath("${references_dir}/${genome_ref_dir}/*", type: 'any', hidden: true)
 def ch_dbsnp            = Channel.fromPath(["${references_dir}/${dbsnp}", "${references_dir}/${dbsnp}.idx"])
 def ch_sentieon_dir     = Channel.fromPath("${sentieon_dir}", type: 'any', hidden: true)
+def ch_bd_scripts_dir   = Channel.fromPath("${projectDir}/scripts/BreakDancer/*", type: 'any', hidden: true)
 
 def ch_causal_snv_vcf   = Channel.fromPath("${projectDir}/assets/hbvar_snv.${meta.genome_name}.normed.vcf", type: 'any', hidden: true)
 def ch_causal_indel_vcf = Channel.fromPath("${projectDir}/assets/hbvar_indel.${meta.genome_name}.normed.vcf", type: 'any', hidden: true)
@@ -26,6 +27,7 @@ include { HAPLOTYPE_CALLER  } from './modules/haplotype_caller'
 include { GENOTYPING        } from './modules/genotyping'
 include { HARD_FILTERING    } from './modules/hard_filtering'
 include { CAUSAL_DETECTION  } from './modules/causal_detection'
+include { BREAKDANCER       } from './modules/breakdancer'
 
 workflow NGS4THAL {
     if (params.skip_filter) {
@@ -38,6 +40,7 @@ workflow NGS4THAL {
         ch_filtered_bam = FILTER_BAM.out.bam
     }
 
+    // For SNV/InDel
     REALIGNED_BAM(
         ch_filtered_bam,
         ch_scripts_dir.collect()
@@ -68,6 +71,12 @@ workflow NGS4THAL {
         ch_scripts_dir.collect(),
         ch_causal_snv_vcf,
         ch_causal_indel_vcf
+    )
+
+    // For SV
+    BREAKDANCER(
+        ch_filtered_bam,
+        ch_bd_scripts_dir.collect()
     )
 }
 
