@@ -6,6 +6,7 @@ process BREAKDANCER {
     input:
     tuple val(meta), path(in_bam), path(in_bai)
     path(bd_scripts_dir)
+    path(known_SV)
 
     output:
     tuple val(meta), path(output)
@@ -13,6 +14,7 @@ process BREAKDANCER {
     script:
     def prefix          = task.ext.prefix ?: "${meta.id}"
     def threads         = task.cpus
+    def sample_id       = meta.id
 
     def bam2cfg_script          = "bam2cfg.pl"
     def modify_bd_config_script = "Modify_BD_config.py"
@@ -20,7 +22,10 @@ process BREAKDANCER {
     def bd_config               = "BD.cfg"
     def bd_config_modified      = "BD.modified.cfg"
     def ins_histogram           = "${in_bam}.SeqCap.insertsize_histogram"
-    def bd_pre_result           = "BD.pre"
+    def bd_pre                  = "BD.pre"
+    def bd_del_pre              = "BreakDancer_Deletion.pre"
+    def bd_del_pre_sorted       = "BreakDancer_Deletion.sorted.pre"
+    def bd_causal_mid_bed       = "BD_Causal.mid.bed"
 
     output                      = "out"
 
@@ -38,15 +43,28 @@ process BREAKDANCER {
     # Check if the configue file match the symmetric distribution
     # If yes, run BreakDancer
     # If no, modify the configure file, then run Breakdancer
-
     if grep -Fq infinity ${bd_config}; then
         # Create new config
         python3 ${modify_bd_config_script} ${ins_histogram} ${bd_config} ${bd_config_modified}
     else
         cp ${bd_config} ${bd_config_modified}
     fi
-    breakdancer-max -q 0 ${bd_config_modified} > ${bd_pre_result}
 
+    # Run BreakDancer on the modified config file
+    breakdancer-max -q 0 ${bd_config_modified} > ${bd_pre}
+
+    # Filtering
+    awk  -v sname=${sample_id} '
+    BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}
+    { 
+        if(\$7=="DEL" && \$10 >= 4 && \$8 >= 100){
+            print \$1"\t"\$2"\t"\$5"\t"\$8"\t"\$10"\t"sname;
+        }
+    }' ${bd_pre} > ${bd_del_pre}
+
+
+    sort -k1,1 -k2,2n ${bd_del_pre} > ${bd_del_pre_sorted}
+    bedtools closest -a ${bd_del_pre_sorted} -b ${known_SV} -d | awk 'BEGIN{FS=OFS="\t"}{if(\$14=="0"){print}}' > ${bd_causal_mid_bed}
 
     touch ${output}
     """
