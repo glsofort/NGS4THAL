@@ -252,7 +252,7 @@ class rpkm_reader:
 			print("Must specify RPKM HDF5 file!")
 			return 0
 		# set up file access
-		self.h5file = tables.openFile(rpkm_fn, mode='r')
+		self.h5file = openFile(rpkm_fn, mode='r')
 		self.sample_table = self.h5file.root.samples.samples
 		
 	def __del__(self):
