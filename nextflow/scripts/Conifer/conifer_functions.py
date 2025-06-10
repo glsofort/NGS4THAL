@@ -25,7 +25,7 @@
 #######################################################################
 
 import csv
-from tables import *
+import tables
 import numpy as np
 import operator
 
@@ -79,7 +79,7 @@ class sample(IsDescription):
 
 def loadProbeList(CF_probe_filename):
 	# Load data files
-	probefile = open(CF_probe_filename, 'rb')
+	probefile = open(CF_probe_filename, 'r')
 	s = csv.Sniffer()
 	header = s.has_header(probefile.read(1024))
 	probefile.seek(0)
@@ -252,7 +252,7 @@ class rpkm_reader:
 			print("Must specify RPKM HDF5 file!")
 			return 0
 		# set up file access
-		self.h5file = openFile(rpkm_fn, mode='r')
+		self.h5file = tables.openFile(rpkm_fn, mode='r')
 		self.sample_table = self.h5file.root.samples.samples
 		
 	def __del__(self):
