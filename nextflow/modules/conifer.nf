@@ -80,7 +80,7 @@ process CONIFER {
         if(\$4-\$3>500 && \$5=="del"){
             print \$2"\t"\$3"\t"\$4"\t"\$4-\$3"\tNA\t"\$1;
         }
-    }' ${cf_cnv_call_03} >> ${cf_del_pre}
+    }' ${cf_cnv_call_05} >> ${cf_del_pre}
 
     sort -k1,1 -k2,2n ${cf_del_pre} > ${cf_del_pre_sorted}
     bedtools closest -a ${cf_del_pre_sorted} -b ${known_SV_bed} -d > ${cf_del_causal_bed}
