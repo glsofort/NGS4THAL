@@ -18,6 +18,7 @@ process BREAKDANCER {
 
     def bam2cfg_script          = "bam2cfg.pl"
     def modify_bd_config_script = "Modify_BD_config.py"
+    def find_mrange_bd_script   = "Find_minimum_range_BreakDancer.py"
 
     def bd_config               = "BD.cfg"
     def bd_config_modified      = "BD.modified.cfg"
@@ -26,8 +27,10 @@ process BREAKDANCER {
     def bd_del_pre              = "BreakDancer_Deletion.pre"
     def bd_del_pre_sorted       = "BreakDancer_Deletion.sorted.pre"
     def bd_causal_mid_bed       = "BD_Causal.mid.bed"
+    def bd_causal_mid_pre       = "BD_Causal_mid.pre"
 
-    output                      = "out"
+
+    output                      = "BD_Causal.pre"
 
     """
     # Generate BD configure file
@@ -62,10 +65,11 @@ process BREAKDANCER {
         }
     }' ${bd_pre} > ${bd_del_pre}
 
-
     sort -k1,1 -k2,2n ${bd_del_pre} > ${bd_del_pre_sorted}
     bedtools closest -a ${bd_del_pre_sorted} -b ${known_SV} -d | awk 'BEGIN{FS=OFS="\t"}{if(\$14=="0"){print}}' > ${bd_causal_mid_bed}
 
-    touch ${output}
+    python3 ${find_mrange_bd_script} --bed ${bd_causal_mid_bed} -minbed ${bd_causal_mid_pre}
+
+    sort -k6 ${bd_causal_mid_pre} > ${output}
     """
 }
