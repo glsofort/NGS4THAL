@@ -12,7 +12,7 @@ process CAUSAL_DETECTION {
     path(sorted_causal_indel_vcf)
 
     output:
-    path("123")
+    path("Thalassaemia.INDEL.PRE")
 
     script:
     def fasta               = meta.fasta
@@ -97,7 +97,5 @@ process CAUSAL_DETECTION {
     python3 ${find_causal_script} -input ${indel_cand_vcf} -mutation "InDel" -knowncausal ${sorted_causal_indel_vcf} -outdir ${indel_outdir}
 
     cat ${indel_outdir}/pre* > Thalassaemia.INDEL.PRE
-
-    touch 123
     """
 }
