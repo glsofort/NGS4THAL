@@ -66,15 +66,16 @@ process BREAKDANCER {
         }
     }' ${bd_pre} > ${bd_del_pre}
 
+    sort -k1,1 -k2,2n ${bd_del_pre} > ${bd_del_pre_sorted}
+
     # If no deletion is found, create an empty output file
-    total_lines=\$(wc -l ${bd_del_pre} | awk '{print \$1}')
-    if [ \$total_lines -eq 0 ]; then
+    total_lines=\$(wc -l ${bd_del_pre_sorted} | awk '{print \$1}')
+    if [ \$total_lines -eq 1 ]; then
         touch ${output}
         exit 0
     fi
 
     # If deletion is found, continue processing
-    sort -k1,1 -k2,2n ${bd_del_pre} > ${bd_del_pre_sorted}
     bedtools closest -a ${bd_del_pre_sorted} -b ${known_SV_bed} -d | awk 'BEGIN{FS=OFS="\t"}{if(\$14=="0"){print}}' > ${bd_causal_mid_bed}
 
     python3 ${find_mrange_bd_script} --bed ${bd_causal_mid_bed} -minbed ${bd_causal_mid_pre}
