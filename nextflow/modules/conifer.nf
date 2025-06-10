@@ -47,6 +47,7 @@ process CONIFER {
 
     """
     # Calculate RPKM using Conifer
+    mkdir -p ${rpkm_dir}
     python3 ${conifer_script} rpkm \
         --probes ${probe_bed} \
         --input ${in_bam} \
