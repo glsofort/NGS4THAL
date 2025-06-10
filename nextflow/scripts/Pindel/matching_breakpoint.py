@@ -7,7 +7,7 @@ parser.add_argument("-outbed", "--outbedfile")
 args = parser.parse_args()
 
 
-def F_mathcing_breakpoint(knownbedfile, bedfile, outbedfile):
+def F_matching_breakpoint(knownbedfile, bedfile, outbedfile):
     db_dict = {}
     with open(knownbedfile, "r") as fp:
         for line in fp:
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     knownbedfile = args.knownbedfile
     bedfile = args.bedfile
     outbedfile = args.outbedfile
-    F_mathcing_breakpoint(knownbedfile=knownbedfile,
+    F_matching_breakpoint(knownbedfile=knownbedfile,
                           bedfile=bedfile, outbedfile=outbedfile)
 else:
     pass

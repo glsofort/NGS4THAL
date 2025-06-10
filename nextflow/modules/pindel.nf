@@ -11,7 +11,7 @@ process PINDEL {
     path(known_SV_bed)
 
     output:
-    path(output),  emit: bd_causal
+    path(output),  emit: pd_causal
 
     script:
     def fasta                   = meta.fasta
