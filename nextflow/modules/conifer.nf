@@ -30,7 +30,7 @@ process CONIFER {
     def cf_analysis_plot        = "analysis.screeplot.png"
     def cf_analysis_sd          = "analysis.sd_values.txt"
 
-    def cf_cnv_call_03          = "CNVcalls.05.txt"
+    def cf_cnv_call_05          = "CNVcalls.05.txt"
     def cf_cnv_call_03          = "CNVcalls.03.txt"
 
     def cf_del_pre              = "Conifer_Deletion.pre"
