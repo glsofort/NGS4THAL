@@ -86,6 +86,6 @@ process PINDEL {
     # For chromosome 11
     python3 ${matching_bp_script} -knownbed ${known_SV_bed} -bed ${pindel_del_chr11_pre} -outbed ${pindel_causal_chr11_del}
 
-    touch ${output}
+    cat ${pindel_causal_chr16_del} ${pindel_causal_chr11_del} > ${output}
     """
 }
