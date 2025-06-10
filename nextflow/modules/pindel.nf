@@ -51,7 +51,7 @@ process PINDEL {
     # Run Pindel for chromosome 11
     pindel -f ${fasta} \
         -i ${pd_config} \
-        -c chr11 \
+        -c 11 \
         -b ${bd_pre} \
         -o ${bd_pindel_chr11_output} \
         -r false \
@@ -63,21 +63,21 @@ process PINDEL {
     awk 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}'  > ${pindel_del_chr16_pre}
     awk 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}'  > ${pindel_del_chr11_pre}
 
-    awk '{if(/BP_range/ && (\$11-\$10 >100)){print}}' ${bd_pindel_chr16_output} | \
-    awk -v sname=${sample_id} '
-    {
-        if(\$16 >= 5){
-            print \$8"\t"\$10"\t"\$11"\t"\$11-\$10"\t"\$16"\t"sname
-        }
-    }' >> ${pindel_del_chr16_pre}
+    awk '{if(/BP_range/ && (\$11-\$10 >100)){print}}' ${bd_pindel_chr16_output}_D | \
+        awk -v sname=${sample_id} '
+        {
+            if(\$16 >= 5){
+                print \$8"\t"\$10"\t"\$11"\t"\$11-\$10"\t"\$16"\t"sname;
+            }
+        }' >> ${pindel_del_chr16_pre}
 
-    awk '{if(/BP_range/ && (\$11-\$10 >100)){print}}' ${bd_pindel_chr11_output} | \
-    awk -v sname=${sample_id} '
-    {
-        if(\$16 >= 5){
-            print \$8"\t"\$10"\t"\$11"\t"\$11-\$10"\t"\$16"\t"sname
-        }
-    }' >> ${pindel_del_chr11_pre}
+    awk '{if(/BP_range/ && (\$11-\$10 >100)){print}}' ${bd_pindel_chr11_output}_D | \
+        awk -v sname=${sample_id} '
+        {
+            if(\$16 >= 5){
+                print \$8"\t"\$10"\t"\$11"\t"\$11-\$10"\t"\$16"\t"sname;
+            }
+        }' >> ${pindel_del_chr11_pre}
 
     # Find exact mathed SVs
     # For chromosome 16

@@ -9,7 +9,7 @@ args = parser.parse_args()
 
 def F_mathcing_breakpoint(knownbedfile, bedfile, outbedfile):
     db_dict = {}
-    with open(knownbedfile, "rb") as fp:
+    with open(knownbedfile, "r") as fp:
         for line in fp:
             div = line.rstrip("\n").split("\t")
             Chr = div[0]
@@ -19,7 +19,7 @@ def F_mathcing_breakpoint(knownbedfile, bedfile, outbedfile):
             value = line.rstrip("\n")
             db_dict[key] = value
 
-    with open(bedfile, "rb") as fp, open(outbedfile, "w") as fout:
+    with open(bedfile, "r") as fp, open(outbedfile, "w") as fout:
         i = 1
         for line in fp:
             if i == 1:
