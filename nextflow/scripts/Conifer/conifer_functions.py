@@ -25,7 +25,7 @@
 #######################################################################
 
 import csv
-import tables
+from tables import *
 import numpy as np
 import operator
 
