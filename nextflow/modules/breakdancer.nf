@@ -6,10 +6,11 @@ process BREAKDANCER {
     input:
     tuple val(meta), path(in_bam), path(in_bai)
     path(bd_scripts_dir)
-    path(known_SV)
+    path(known_SV_bed)
 
     output:
-    tuple val(meta), path(output)
+    path(output),  emit: bd_causal
+    path(bd_pre),  emit: bd_pre
 
     script:
     def prefix          = task.ext.prefix ?: "${meta.id}"
@@ -23,13 +24,13 @@ process BREAKDANCER {
     def bd_config               = "BD.cfg"
     def bd_config_modified      = "BD.modified.cfg"
     def ins_histogram           = "${in_bam}.SeqCap.insertsize_histogram"
-    def bd_pre                  = "BD.pre"
     def bd_del_pre              = "BreakDancer_Deletion.pre"
     def bd_del_pre_sorted       = "BreakDancer_Deletion.sorted.pre"
     def bd_causal_mid_bed       = "BD_Causal.mid.bed"
     def bd_causal_mid_pre       = "BD_Causal_mid.pre"
 
 
+    bd_pre                      = "BD.pre"
     output                      = "BD_Causal.pre"
 
     """
@@ -59,14 +60,22 @@ process BREAKDANCER {
     # Filtering
     awk  -v sname=${sample_id} '
     BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}
-    { 
+    {
         if(\$7=="DEL" && \$10 >= 4 && \$8 >= 100){
             print \$1"\t"\$2"\t"\$5"\t"\$8"\t"\$10"\t"sname;
         }
     }' ${bd_pre} > ${bd_del_pre}
 
+    # If no deletion is found, create an empty output file
+    total_lines=\$(wc -l ${bd_del_pre} | awk '{print \$1}')
+    if [ \$total_lines -eq 0 ]; then
+        touch ${output}
+        exit 0
+    fi
+
+    # If deletion is found, continue processing
     sort -k1,1 -k2,2n ${bd_del_pre} > ${bd_del_pre_sorted}
-    bedtools closest -a ${bd_del_pre_sorted} -b ${known_SV} -d | awk 'BEGIN{FS=OFS="\t"}{if(\$14=="0"){print}}' > ${bd_causal_mid_bed}
+    bedtools closest -a ${bd_del_pre_sorted} -b ${known_SV_bed} -d | awk 'BEGIN{FS=OFS="\t"}{if(\$14=="0"){print}}' > ${bd_causal_mid_bed}
 
     python3 ${find_mrange_bd_script} --bed ${bd_causal_mid_bed} -minbed ${bd_causal_mid_pre}
 

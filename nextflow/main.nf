@@ -4,7 +4,7 @@ def ch_bai              = file(params.bai)
 def ch_input            = [meta, ch_bam, ch_bai]
 
 def ch_bed              = Channel.fromPath("${projectDir}/assets/Thalassaemia_${meta.genome_name}_genome.bed")
-def ch_known_SV         = Channel.fromPath("${projectDir}/assets/known_SV_Deletion_100bp.sorted.bed", type: 'any', hidden: true)
+def ch_known_SV_bed         = Channel.fromPath("${projectDir}/assets/known_SV_Deletion_100bp.sorted.bed", type: 'any', hidden: true)
 
 def sentieon_dir        = "${params.database}/sentieon/${params.sentieon_release_version}"
 def references_dir      = "${params.database}/sentieon/${params.genome}/references"
@@ -16,6 +16,7 @@ def ch_references_dir   = Channel.fromPath("${references_dir}/${genome_ref_dir}/
 def ch_dbsnp            = Channel.fromPath(["${references_dir}/${dbsnp}", "${references_dir}/${dbsnp}.idx"])
 def ch_sentieon_dir     = Channel.fromPath("${sentieon_dir}", type: 'any', hidden: true)
 def ch_bd_scripts_dir   = Channel.fromPath("${projectDir}/scripts/BreakDancer/*", type: 'any', hidden: true)
+def ch_pd_scripts_dir   = Channel.fromPath("${projectDir}/scripts/Pindel/*", type: 'any', hidden: true)
 
 def ch_causal_snv_vcf   = Channel.fromPath("${projectDir}/assets/hbvar_snv.${meta.genome_name}.normed.vcf", type: 'any', hidden: true)
 def ch_causal_indel_vcf = Channel.fromPath("${projectDir}/assets/hbvar_indel.${meta.genome_name}.normed.vcf", type: 'any', hidden: true)
@@ -29,6 +30,7 @@ include { GENOTYPING        } from './modules/genotyping'
 include { HARD_FILTERING    } from './modules/hard_filtering'
 include { CAUSAL_DETECTION  } from './modules/causal_detection'
 include { BREAKDANCER       } from './modules/breakdancer'
+include { PINDEL            } from './modules/pindel'
 
 workflow NGS4THAL {
     if (params.skip_filter) {
@@ -78,7 +80,15 @@ workflow NGS4THAL {
     BREAKDANCER(
         ch_filtered_bam,
         ch_bd_scripts_dir.collect(),
-        ch_known_SV
+        ch_known_SV_bed
+    )
+
+    PINDEL(
+        ch_filtered_bam,
+        BREAKDANCER.out.bd_pre,
+        ch_pd_scripts_dir.collect(),
+        ch_references_dir.collect(),
+        ch_known_SV_bed
     )
 }
 
