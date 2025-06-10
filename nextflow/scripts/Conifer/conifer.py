@@ -30,7 +30,7 @@ import glob
 import csv
 import conifer_functions as cf
 import operator
-import tables
+from tables import open_file
 import numpy  as np
 
 def CF_analyze(args):
@@ -47,8 +47,8 @@ def CF_analyze(args):
 	
 	try: 
 		svd_outfile_fn = str(args.output)
-		h5file_out = tables.open_file(svd_outfile_fn, mode='w')
-		probe_group = h5file_out.createGroup("/","probes","probes")
+		h5file_out = open_file(svd_outfile_fn, mode='w')
+		probe_group = h5file_out.create_group("/","probes","probes")
 	except IOError as e: 
 		print (f'[ERROR] Cannot open SVD output file for writing: {svd_outfile_fn}')
 		sys.exit(0)
@@ -131,7 +131,7 @@ def CF_analyze(args):
 	for chr in chrs_to_process:
 		print (f"[RUNNING: chr{chr}] Now on: {cf.chrInt2Str(chr)}")
 		chr_group_name = "chr%d" % chr
-		chr_group = h5file_out.createGroup("/",chr_group_name,chr_group_name)
+		chr_group = h5file_out.create_group("/",chr_group_name,chr_group_name)
 		
 		chr_probes = filter(lambda i: i["chr"] == chr, probes)
 		num_chr_probes = len(chr_probes)
@@ -166,7 +166,7 @@ def CF_analyze(args):
 		out_probes['start'] = probe_starts
 		out_probes['stop'] = probe_stops
 		out_probes['name'] = gene_names
-		probe_table = h5file_out.createTable(probe_group,"probes_chr%d" % chr,cf.probe,"chr%d" % chr)
+		probe_table = h5file_out.create_table(probe_group,"probes_chr%d" % chr,cf.probe,"chr%d" % chr)
 		probe_table.append(out_probes)
 		
 		print ("[RUNNING: chr%d] Calculating ZRPKM scores..." % chr)
@@ -196,13 +196,13 @@ def CF_analyze(args):
 			out_data = np.empty(num_chr_probes,dtype='u4,f8')
 			out_data['f0'] = probeIDs
 			out_data['f1'] = rpkm[:,i]
-			sample_tbl = h5file_out.createTable(chr_group,"sample_" + str(s),cf.rpkm_value,"%s" % str(s))
+			sample_tbl = h5file_out.create_table(chr_group,"sample_" + str(s),cf.rpkm_value,"%s" % str(s))
 			sample_tbl.append(out_data)
 	
 	
 	print ("[RUNNING] Saving sampleIDs to file...")
-	sample_group = h5file_out.createGroup("/","samples","samples")
-	sample_table = h5file_out.createTable(sample_group,"samples",cf.sample,"samples")
+	sample_group = h5file_out.create_group("/","samples","samples")
+	sample_table = h5file_out.create_table(sample_group,"samples",cf.sample,"samples")
 	dt = np.dtype([('sampleID',np.str_,100)])
 	out_samples = np.empty(len(samples.keys()),dtype=dt)
 	out_samples['sampleID'] = np.array(samples.keys())
@@ -246,7 +246,7 @@ def CF_analyze(args):
 def CF_export(args):
 	try: 
 		h5file_in_fn = str(args.input)
-		h5file_in = tables.open_file(h5file_in_fn, mode='r')
+		h5file_in = open_file(h5file_in_fn, mode='r')
 	except IOError as e: 
 		print ('[ERROR] Cannot open CoNIFER input file for reading: ', h5file_in_fn)
 		sys.exit(0)	
@@ -314,7 +314,7 @@ def CF_export(args):
 def CF_call(args):
 	try: 
 		h5file_in_fn = str(args.input)
-		h5file_in = tables.open_file(h5file_in_fn, mode='r')
+		h5file_in = open_file(h5file_in_fn, mode='r')
 	except IOError as e: 
 		print ('[ERROR] Cannot open CoNIFER input file for reading: ', h5file_in_fn)
 		sys.exit(0)		
