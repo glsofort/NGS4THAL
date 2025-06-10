@@ -30,7 +30,7 @@ process CONIFER {
     def cf_analysis_plot        = "analysis.screeplot.png"
     def cf_analysis_sd          = "analysis.sd_values.txt"
 
-    def cf_cnv_call_05          = "CNVcalls.05.txt"
+    def cf_cnv_call_03          = "CNVcalls.05.txt"
     def cf_cnv_call_03          = "CNVcalls.03.txt"
 
     def cf_del_pre              = "Conifer_Deletion.pre"
@@ -56,36 +56,36 @@ process CONIFER {
     python3 ${conifer_script} analyze \
         --probes ${probe_bed} \
         --rpkm_dir ${rpkm_dir} \
-        --output ${conifer_analysis_hdf5} \
+        --output ${cf_analysis_hdf5} \
         --svd 3 \
-        --write_svals ${conifer_analysis_svals} \
-        --plot_scree ${conifer_analysis_plot} \
-        --write_sd ${conifer_analysis_sd}
+        --write_svals ${cf_analysis_svals} \
+        --plot_scree ${cf_analysis_plot} \
+        --write_sd ${cf_analysis_sd}
 
     # Call CNVs using Conifer with a threshold of 0.5
     python3 ${conifer_script} call \
-    --input ${conifer_analysis_hdf5} \
+    --input ${cf_analysis_hdf5} \
     --threshold 0.5 \
-    --output ${conifer_cnv_call_05}
+    --output ${cf_cnv_call_05}
 
     # Call CNVs using Conifer with a threshold of 0.3
     python3 ${conifer_script} call \
-        --input ${conifer_analysis_hdf5} \
+        --input ${cf_analysis_hdf5} \
         --threshold 0.3 \
-        --output ${conifer_cnv_call_03}
+        --output ${cf_cnv_call_03}
 
     # Find causal varaints
-    awk 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}'  > ${conifer_del_pre}
+    awk 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}'  > ${cf_del_pre}
     awk '{
         if(\$4-\$3>500 && \$5=="del"){
             print \$2"\t"\$3"\t"\$4"\t"\$4-\$3"\tNA\t"\$1;
         }
-    }' ${conifer_cnv_call_05} >> ${conifer_del_pre}
+    }' ${cf_cnv_call_03} >> ${cf_del_pre}
 
-    sort -k1,1 -k2,2n ${conifer_del_pre} > ${conifer_del_pre_sorted}
-    bedtools closest -a ${conifer_del_pre_sorted} -b ${known_SV_bed} -d > ${conifer_del_causal_bed}
+    sort -k1,1 -k2,2n ${cf_del_pre} > ${cf_del_pre_sorted}
+    bedtools closest -a ${cf_del_pre_sorted} -b ${known_SV_bed} -d > ${cf_del_causal_bed}
 
-    python3 ${find_mr_conifer_script} --bed ${conifer_del_causal_bed} -minbed ${cf_del_causal_pre_mid}
+    python3 ${find_mr_conifer_script} --bed ${cf_del_causal_bed} -minbed ${cf_del_causal_pre_mid}
     sort -k6 ${cf_del_causal_pre_mid} > ${output_del_causal_pre}
 
     # For duplication
