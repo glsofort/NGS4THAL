@@ -94,12 +94,12 @@ workflow NGS4THAL {
         ch_known_SV_bed
     )
 
-    CONIFER(
-        ch_filtered_bam,
-        ch_cf_scripts_dir.collect(),
-        ch_probe_bed,
-        ch_known_SV_bed
-    )
+    // CONIFER(
+    //     ch_filtered_bam,
+    //     ch_cf_scripts_dir.collect(),
+    //     ch_probe_bed,
+    //     ch_known_SV_bed
+    // )
 
 
 }
