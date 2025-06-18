@@ -47,52 +47,52 @@ workflow NGS4THAL {
     }
 
     // For SNV/InDel
-    // REALIGNED_BAM(
-    //     ch_filtered_bam,
-    //     ch_scripts_dir.collect()
-    // )
+    REALIGNED_BAM(
+        ch_filtered_bam,
+        ch_scripts_dir.collect()
+    )
 
-    // HAPLOTYPE_CALLER(
-    //     REALIGNED_BAM.out.bam,
-    //     ch_dbsnp.collect(),
-    //     ch_references_dir.collect(),
-    //     ch_sentieon_dir
-    // )
+    HAPLOTYPE_CALLER(
+        REALIGNED_BAM.out.bam,
+        ch_dbsnp.collect(),
+        ch_references_dir.collect(),
+        ch_sentieon_dir
+    )
 
-    // GENOTYPING(
-    //     HAPLOTYPE_CALLER.out.gvcf,
-    //     ch_dbsnp.collect(),
-    //     ch_references_dir.collect(),
-    //     ch_sentieon_dir
-    // )
+    GENOTYPING(
+        HAPLOTYPE_CALLER.out.gvcf,
+        ch_dbsnp.collect(),
+        ch_references_dir.collect(),
+        ch_sentieon_dir
+    )
 
-    // HARD_FILTERING(
-    //     GENOTYPING.out.vcf
-    // )
+    HARD_FILTERING(
+        GENOTYPING.out.vcf
+    )
 
-    // CAUSAL_DETECTION(
-    //     HARD_FILTERING.out.snp_vcf,
-    //     HARD_FILTERING.out.indel_vcf,
-    //     ch_references_dir.collect(),
-    //     ch_scripts_dir.collect(),
-    //     ch_causal_snv_vcf,
-    //     ch_causal_indel_vcf
-    // )
+    CAUSAL_DETECTION(
+        HARD_FILTERING.out.snp_vcf,
+        HARD_FILTERING.out.indel_vcf,
+        ch_references_dir.collect(),
+        ch_scripts_dir.collect(),
+        ch_causal_snv_vcf,
+        ch_causal_indel_vcf
+    )
 
     // For SV
-    BREAKDANCER(
-        ch_filtered_bam,
-        ch_bd_scripts_dir.collect(),
-        ch_known_SV_bed
-    )
+    // BREAKDANCER(
+    //     ch_filtered_bam,
+    //     ch_bd_scripts_dir.collect(),
+    //     ch_known_SV_bed
+    // )
 
-    PINDEL(
-        ch_filtered_bam,
-        BREAKDANCER.out.bd_pre,
-        ch_pd_scripts_dir.collect(),
-        ch_references_dir.collect(),
-        ch_known_SV_bed
-    )
+    // PINDEL(
+    //     ch_filtered_bam,
+    //     BREAKDANCER.out.bd_pre,
+    //     ch_pd_scripts_dir.collect(),
+    //     ch_references_dir.collect(),
+    //     ch_known_SV_bed
+    // )
 
     // CONIFER(
     //     ch_filtered_bam,

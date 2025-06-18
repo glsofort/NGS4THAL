@@ -46,69 +46,27 @@ def F_Create_pseudo_vcf(inputvcf, outputvcf):
 
                 if alt_num == 1 and alt != "*":
                     newline = chrom + "\t" + pos + "\t" + ref + "\t" + alt
-                    for i in range(9, samplecount + 9):
-                        raw_GT = div[i].split(":")[0]
-                        if raw_GT == "0/0" or raw_GT == "0|0":
-                            new_GT = ref + "_" + ref
-                            newline = newline + "\t" + new_GT
-                        elif raw_GT == "0/1" or raw_GT == "0|1":
-                            new_GT = ref + "_" + alt
-                            newline = newline + "\t" + new_GT
-                        elif raw_GT == "1/1" or raw_GT == "1|1":
-                            new_GT = alt + "_" + alt
-                            newline = newline + "\t" + new_GT
-                        else:
-                            new_GT = "Untyped"
-                    newline = newline + "\n"
-                    fout.write(newline)
-                else:
-                    newline = chrom + "\t" + pos + "\t" + ref + "\t" + alt
-                    alt_allele[1] = alt.split(",")[0]
-                    try:
-                        alt_allele[2] = alt.split(",")[1]
-                    except IndexError:
-                        alt_allele[2] = "NA"
-                    try:
-                        alt_allele[3] = alt.split(",")[2]
-                    except IndexError:
-                        alt_allele[3] = "NA"
+                    # Flag to track if we have any non-reference genotypes
+                    has_non_ref = False
 
                     for i in range(9, samplecount + 9):
                         raw_GT = div[i].split(":")[0]
                         if raw_GT == "0/0" or raw_GT == "0|0":
-                            new_GT = ref + "_" + ref
-                            newline = newline + "\t" + new_GT
+                            pass
                         elif raw_GT == "0/1" or raw_GT == "0|1":
-                            new_GT = ref + "_" + alt_allele[1]
+                            new_GT = ref + "_" + alt
                             newline = newline + "\t" + new_GT
-                        elif raw_GT == "0/2" or raw_GT == "0|2":
-                            new_GT = ref + "_" + alt_allele[2]
-                            newline = newline + "\t" + new_GT
-                        elif raw_GT == "0/3" or raw_GT == "0|3":
-                            new_GT = ref + "_" + alt_allele[3]
-                            newline = newline + "\t" + new_GT
+                            has_non_ref = True
                         elif raw_GT == "1/1" or raw_GT == "1|1":
-                            new_GT = alt_allele[1] + "_" + alt_allele[1]
+                            new_GT = alt + "_" + alt
                             newline = newline + "\t" + new_GT
-                        elif raw_GT == "1/2" or raw_GT == "1|2":
-                            new_GT = alt_allele[1] + "_" + alt_allele[2]
-                            newline = newline + "\t" + new_GT
-                        elif raw_GT == "1/3" or raw_GT == "1|3":
-                            new_GT = alt_allele[1] + "_" + alt_allele[3]
-                            newline = newline + "\t" + new_GT
-                        elif raw_GT == "2/2" or raw_GT == "2|2":
-                            new_GT = alt_allele[2] + "_" + alt_allele[2]
-                            newline = newline + "\t" + new_GT
-                        elif raw_GT == "2/3" or raw_GT == "2|3":
-                            new_GT = alt_allele[2] + "_" + alt_allele[3]
-                            newline = newline + "\t" + new_GT
-                        elif raw_GT == "3/3" or raw_GT == "3|3":
-                            new_GT = alt_allele[3] + "_" + alt_allele[3]
-                            newline = newline + "\t" + new_GT
+                            has_non_ref = True
                         else:
-                            new_GT = "Untyped"
-                    newline = newline + "\n"
-                    fout.write(newline)
+                            pass
+                    # Only write if we found at least one non-reference genotype
+                    if has_non_ref:
+                        newline = newline + "\n"
+                        fout.write(newline)
     return 1
 
 
@@ -122,7 +80,7 @@ def F_split_pseudovcf_by_sample(vcffile, outputfolder):
     for sample in samplenamelists:
         outputfilename = str(sample) + ".txt"
         filepath = outputfolder + "/" + outputfilename
-        df = GT_matrix.loc[:, ["#CHROM", "POS", sample]]
+        df = GT_matrix.loc[:, ["#CHROM", "POS", "REF", "ALT", sample]]
         df.to_csv(filepath, index=False, sep="\t")
     return samplenamelists, samplecount
 
@@ -142,7 +100,9 @@ def F_match_causal(samplefile, knowncausal, outputfile):
                 fout.write(line)
             else:
                 div = line.rstrip("\n").split("\t")
-                current_key = div[0] + "_" + str(div[1]) + "_" + div[2]
+                current_key = (
+                    div[0] + "_" + str(div[1]) + "_" + str(div[2]) + "_" + str(div[3])
+                )
                 if current_key in db_dict.keys():
                     newline = line.rstrip("\n") + "\t" + db_dict[current_key] + "\n"
                     fout.write(newline)
