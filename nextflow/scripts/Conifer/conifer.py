@@ -205,7 +205,7 @@ def CF_analyze(args):
 	sample_table = h5file_out.create_table(sample_group,"samples",cf.sample,"samples")
 	dt = np.dtype([('sampleID','S100')])
 	out_samples = np.empty(len(samples.keys()),dtype=dt)
-	out_samples['sampleID'] = np.array(samples.keys())
+	out_samples['sampleID'] = np.array(list(samples.keys()))
 	sample_table.append(out_samples)
 	
 	
