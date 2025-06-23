@@ -65,7 +65,8 @@ process BREAKDANCER {
         }
     }' ${bd_pre} > ${bd_del_pre}
 
-    sort -k1,1 -k2,2n ${bd_del_pre} | awk -F"\t" 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}{ print }' > ${bd_del_pre_sorted}
+    # awk -F"\t" 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}{ print }'
+    sort -k1,1 -k2,2n ${bd_del_pre} > ${bd_del_pre_sorted}
 
     # If no deletion is found, create an empty output file
     total_lines=\$(wc -l ${bd_del_pre_sorted} | awk '{print \$1}')
