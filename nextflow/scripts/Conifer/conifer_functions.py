@@ -339,8 +339,6 @@ class rpkm_reader:
 			d.rpkm = data.transpose()
 		d.samples = out_sample_list
 		d.exons = probe_tbl.read_coordinates(table_rows)
-		
-		print(d)
 
 		return d
 	
