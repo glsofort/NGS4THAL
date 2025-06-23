@@ -159,7 +159,7 @@ def CF_analyze(args):
 		probe_stops = np.array(list(map(operator.itemgetter("stop"),chr_probes)))[probe_mask]	
 		gene_names = np.array(list(map(operator.itemgetter("name"),chr_probes)))[probe_mask]
 		
-		dt = np.dtype([('probeID',np.uint32),('start',np.uint32),('stop',np.uint32), ('name', np.str_, 20)])
+		dt = np.dtype([('probeID',np.uint32),('start',np.uint32),('stop',np.uint32), ('name', 'S20')])
 		
 		out_probes = np.empty(num_chr_probes,dtype=dt)
 		out_probes['probeID'] = probeIDs
@@ -203,7 +203,7 @@ def CF_analyze(args):
 	print ("[RUNNING] Saving sampleIDs to file...")
 	sample_group = h5file_out.create_group("/","samples","samples")
 	sample_table = h5file_out.create_table(sample_group,"samples",cf.sample,"samples")
-	dt = np.dtype([('sampleID',np.str_,100)])
+	dt = np.dtype([('sampleID','S100')])
 	out_samples = np.empty(len(samples.keys()),dtype=dt)
 	out_samples['sampleID'] = np.array(samples.keys())
 	sample_table.append(out_samples)
