@@ -235,12 +235,29 @@ class rpkm_data:
 		if isinstance(sampleIDs,list):
 			mask = np.zeros(len(sample_array),dtype=bool)
 			for sampleID in sampleIDs:
-				mask = np.logical_or(mask, sample_array == str(sampleID))
+				# Handle bytes/string compatibility
+				if isinstance(sampleID, bytes):
+					sampleID = sampleID.decode('utf-8')
+				else:
+					sampleID = str(sampleID)
+				
+				# Try both string and bytes comparison
+				string_mask = sample_array == sampleID
+				bytes_mask = sample_array == sampleID.encode('utf-8')
+				mask = np.logical_or(mask, np.logical_or(string_mask, bytes_mask))
 			
 			return self.rpkm[:,mask]
-		else:		
-			mask = sample_array == str(sampleID)
-			return self.rpkm[:,mask]
+
+		# Handle bytes/string compatibility for single sample
+		if isinstance(sampleIDs, bytes):
+			sampleIDs = sampleIDs.decode('utf-8')
+		else:
+			sampleIDs = str(sampleIDs)
+		
+		string_mask = sample_array == sampleIDs
+		bytes_mask = sample_array == sampleIDs.encode('utf-8')
+		mask = np.logical_or(string_mask, bytes_mask)
+		return self.rpkm[:,mask]
 	
 	def getSamples(self, sampleIDs):
 		return self.getSample(sampleIDs)
