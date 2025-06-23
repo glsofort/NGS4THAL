@@ -193,12 +193,12 @@ def CF_analyze(args):
 		print ("[RUNNING: chr%d] Saving SVD-ZRPKM values" % chr)
 		
 		for i,s in enumerate(samples):
-			out_data = np.empty(num_chr_probes,dtype='u4,f8')
-			out_data['f0'] = probeIDs
-			out_data['f1'] = rpkm[:,i]
+			# Create data with the correct structure
+			out_data = np.empty(num_chr_probes, dtype=[('probeID', np.uint32), ('rpkm', np.float64)])
+			out_data['probeID'] = probeIDs
+			out_data['rpkm'] = rpkm[:,i]
 			sample_tbl = h5file_out.create_table(chr_group,"sample_" + str(s),cf.rpkm_value,"%s" % str(s))
 			sample_tbl.append(out_data)
-	
 	
 	print ("[RUNNING] Saving sampleIDs to file...")
 	sample_group = h5file_out.create_group("/","samples","samples")
@@ -219,9 +219,9 @@ def CF_analyze(args):
 			count = 1
 			for chr in chrs_to_process:
 				if count == 1:
-					sd_out = h5file_out.root._f_get_child("chr%d" % chr)._f_get_child("sample_%s" % s).read(field="f1").flatten()
+					sd_out = h5file_out.root._f_get_child("chr%d" % chr)._f_get_child("sample_%s" % s).read(field="rpkm").flatten()
 				else:
-					sd_out = np.hstack([sd_out, h5file_out.root._f_get_child("chr%d" % chr)._f_get_child("sample_%s" % s).read(field="f1").flatten()])
+					sd_out = np.hstack([sd_out, h5file_out.root._f_get_child("chr%d" % chr)._f_get_child("sample_%s" % s).read(field="rpkm").flatten()])
 				
 				sd = np.std(sd_out)
 			sd_file.write("%s\t%f\n" % (s,sd))
