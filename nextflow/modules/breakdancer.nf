@@ -58,15 +58,14 @@ process BREAKDANCER {
     breakdancer-max -q 0 ${bd_config_modified} > ${bd_pre}
 
     # Filtering
-    awk  -v sname=${sample_id} '
-    BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}
+    awk -v sname=${sample_id} '
     {
         if(\$7=="DEL" && \$10 >= 4 && \$8 >= 100){
             print \$1"\t"\$2"\t"\$5"\t"\$8"\t"\$10"\t"sname;
         }
     }' ${bd_pre} > ${bd_del_pre}
 
-    sort -k1,1 -k2,2n ${bd_del_pre} > ${bd_del_pre_sorted}
+    sort -k1,1 -k2,2n ${bd_del_pre} | awk -F"\t" 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}{ print }' > ${bd_del_pre_sorted}
 
     # If no deletion is found, create an empty output file
     total_lines=\$(wc -l ${bd_del_pre_sorted} | awk '{print \$1}')
