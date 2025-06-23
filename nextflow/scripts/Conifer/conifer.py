@@ -139,7 +139,7 @@ def CF_analyze(args):
 		stop_probeID = chr_probes[-1]['probeID']
 		print ("[RUNNING: chr%d] Found %d probes; probeID range is [%d-%d]" % (chr, len(chr_probes), start_probeID-1, stop_probeID)) # probeID is 1-based and slicing is 0-based, hence the start_probeID-1 term
 		
-		rpkm = RPKM_data[start_probeID:stop_probeID,:]
+		rpkm = RPKM_data[start_probeID-1:stop_probeID,:]
 		
 		print ("[RUNNING: chr%d] Calculating median RPKM" % chr)
 		median = np.median(rpkm,1)
