@@ -70,7 +70,7 @@ process BREAKDANCER {
 
     # If no deletion is found, create an empty output file
     total_lines=\$(wc -l ${bd_del_pre_sorted} | awk '{print \$1}')
-    if [ \$total_lines -eq 1 ]; then
+    if [ \$total_lines -eq 0 ]; then
         touch ${output}
         exit 0
     fi
