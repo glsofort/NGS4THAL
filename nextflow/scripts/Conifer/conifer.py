@@ -203,9 +203,9 @@ def CF_analyze(args):
 	print ("[RUNNING] Saving sampleIDs to file...")
 	sample_group = h5file_out.create_group("/","samples","samples")
 	sample_table = h5file_out.create_table(sample_group,"samples",cf.sample,"samples")
-	dt = np.dtype([('sampleID','U100')])  # Use Unicode strings, not bytes
+	dt = np.dtype([('sampleID','S100')])
 	out_samples = np.empty(len(samples.keys()),dtype=dt)
-	out_samples['sampleID'] = np.array(list(samples.keys()), dtype='U100')
+	out_samples['sampleID'] = np.array(list(samples.keys()))
 	sample_table.append(out_samples)
 	
 	
