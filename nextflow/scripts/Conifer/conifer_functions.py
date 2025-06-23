@@ -232,32 +232,44 @@ class rpkm_data:
 	
 	def getSample(self, sampleIDs):
 		sample_array = np.array(self.samples)
-		if isinstance(sampleIDs,list):
-			mask = np.zeros(len(sample_array),dtype=bool)
+		if isinstance(sampleIDs, list):
+			mask = np.zeros(len(sample_array), dtype=bool)
 			for sampleID in sampleIDs:
-				# Handle bytes/string compatibility
+				# Convert to string for comparison
 				if isinstance(sampleID, bytes):
-					sampleID = sampleID.decode('utf-8')
+					target = sampleID.decode('utf-8')
 				else:
-					sampleID = str(sampleID)
+					target = str(sampleID)
 				
-				# Try both string and bytes comparison
-				string_mask = sample_array == sampleID
-				bytes_mask = sample_array == sampleID.encode('utf-8')
-				mask = np.logical_or(mask, np.logical_or(string_mask, bytes_mask))
+				# Create comparison mask for each sample in array
+				for i, sample in enumerate(sample_array):
+					if isinstance(sample, bytes):
+						sample_str = sample.decode('utf-8')
+					else:
+						sample_str = str(sample)
+					
+					if sample_str == target:
+						mask[i] = True
 			
-			return self.rpkm[:,mask]
-
-		# Handle bytes/string compatibility for single sample
-		if isinstance(sampleIDs, bytes):
-			sampleIDs = sampleIDs.decode('utf-8')
+			return self.rpkm[:, mask]
 		else:
-			sampleIDs = str(sampleIDs)
-		
-		string_mask = sample_array == sampleIDs
-		bytes_mask = sample_array == sampleIDs.encode('utf-8')
-		mask = np.logical_or(string_mask, bytes_mask)
-		return self.rpkm[:,mask]
+			# Single sample case
+			if isinstance(sampleIDs, bytes):
+				target = sampleIDs.decode('utf-8')
+			else:
+				target = str(sampleIDs)
+			
+			mask = np.zeros(len(sample_array), dtype=bool)
+			for i, sample in enumerate(sample_array):
+				if isinstance(sample, bytes):
+					sample_str = sample.decode('utf-8')
+				else:
+					sample_str = str(sample)
+				
+				if sample_str == target:
+					mask[i] = True
+			
+			return self.rpkm[:, mask]
 	
 	def getSamples(self, sampleIDs):
 		return self.getSample(sampleIDs)
