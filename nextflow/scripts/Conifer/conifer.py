@@ -101,11 +101,11 @@ def CF_analyze(args):
 		sys.exit(0)
 	
 	# LOAD RPKM DATA
-	RPKM_data = np.zeros([num_probes,len(samples)], dtype=np.float)
+	RPKM_data = np.zeros([num_probes,len(samples)], dtype=float)
 	failed_samples = 0
 	
 	for i,s in enumerate(samples.keys()):
-		t = np.loadtxt(samples[s], dtype=np.float, delimiter="\t", skiprows=0, usecols=[2])
+		t = np.loadtxt(samples[s], dtype=float, delimiter="\t", skiprows=0, usecols=[2])
 		if len(t) != num_probes:
 			print (f"[WARNING] Number of RPKM values for {s} in file {samples[s]} does not match number of defined probes in {probe_fn}. **This sample will be dropped from analysis**!")
 			_ = samples.pop(s)
