@@ -122,7 +122,7 @@ def CF_analyze(args):
 		sys.exit(0)
 	
 	# BEGIN 
-	chrs_to_process = set(map(operator.itemgetter("chr"),probes))
+	chrs_to_process = set(list(map(operator.itemgetter("chr"),probes)))
 	chrs_to_process_str = ', '.join([cf.chrInt2Str(c) for c in chrs_to_process])
 	print ('[INIT] Attempting to process chromosomes: ', chrs_to_process_str)
 	
@@ -154,10 +154,10 @@ def CF_analyze(args):
 			print ("[ERROR] This chromosome has fewer informative probes than there are samples in the analysis! There are probably no mappings on this chromosome. Please remove these probes from the probes.txt file")
 			sys.exit(0)
 		
-		probeIDs = np.array(map(operator.itemgetter("probeID"),chr_probes))[probe_mask]
-		probe_starts = np.array(map(operator.itemgetter("start"),chr_probes))[probe_mask]
-		probe_stops = np.array(map(operator.itemgetter("stop"),chr_probes))[probe_mask]	
-		gene_names =  np.array(map(operator.itemgetter("name"),chr_probes))[probe_mask]	
+		probeIDs = np.array(list(map(operator.itemgetter("probeID"),chr_probes)))[probe_mask]
+		probe_starts = np.array(list(map(operator.itemgetter("start"),chr_probes)))[probe_mask]
+		probe_stops = np.array(list(map(operator.itemgetter("stop"),chr_probes)))[probe_mask]	
+		gene_names = np.array(list(map(operator.itemgetter("name"),chr_probes)))[probe_mask]
 		
 		dt = np.dtype([('probeID',np.uint32),('start',np.uint32),('stop',np.uint32), ('name', np.str_, 20)])
 		
@@ -431,7 +431,7 @@ def CF_plot(args):
 			try:
 				color, sampleID = sample.split(":")
 			except:
-				color =coloriter.next()
+				color = next(coloriter)
 				sampleID = sample
 			
 			ax.plot(data.getSample([sampleID]), linewidth = 1, c=color, label = sampleID)
@@ -573,7 +573,7 @@ def CF_bam2RPKM(args):
 	
 	# detect contig naming scheme here # TODO, add an optional "contigs.txt" file or automatically handle contig naming
 	bam_contigs = f.references
-	probes_contigs = [str(p) for p in set(map(operator.itemgetter("chr"),probes))]
+	probes_contigs = [str(p) for p in set(list(map(operator.itemgetter("chr"),probes)))]
 	
 	probes2contigmap = {}
 	
