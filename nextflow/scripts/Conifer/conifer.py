@@ -219,9 +219,9 @@ def CF_analyze(args):
 			count = 1
 			for chr in chrs_to_process:
 				if count == 1:
-					sd_out = h5file_out.root._f_getChild("chr%d" % chr)._f_getChild("sample_%s" % s).read(field="rpkm").flatten()
+					sd_out = h5file_out.root._f_get_child("chr%d" % chr)._f_get_child("sample_%s" % s).read(field="f1").flatten()
 				else:
-					sd_out = np.hstack([sd_out,out.h5file_out.root._f_getChild("chr%d" % chr)._f_getChild("sample_%s" % s).read(field="rpkm").flatten()])
+					sd_out = np.hstack([sd_out, h5file_out.root._f_get_child("chr%d" % chr)._f_get_child("sample_%s" % s).read(field="f1").flatten()])
 				
 				sd = np.std(sd_out)
 			sd_file.write("%s\t%f\n" % (s,sd))
