@@ -47,37 +47,37 @@ workflow NGS4THAL {
     }
 
     // For SNV/InDel
-    REALIGNED_BAM(
-        ch_filtered_bam,
-        ch_scripts_dir.collect()
-    )
+    // REALIGNED_BAM(
+    //     ch_filtered_bam,
+    //     ch_scripts_dir.collect()
+    // )
 
-    HAPLOTYPE_CALLER(
-        REALIGNED_BAM.out.bam,
-        ch_dbsnp.collect(),
-        ch_references_dir.collect(),
-        ch_sentieon_dir
-    )
+    // HAPLOTYPE_CALLER(
+    //     REALIGNED_BAM.out.bam,
+    //     ch_dbsnp.collect(),
+    //     ch_references_dir.collect(),
+    //     ch_sentieon_dir
+    // )
 
-    GENOTYPING(
-        HAPLOTYPE_CALLER.out.gvcf,
-        ch_dbsnp.collect(),
-        ch_references_dir.collect(),
-        ch_sentieon_dir
-    )
+    // GENOTYPING(
+    //     HAPLOTYPE_CALLER.out.gvcf,
+    //     ch_dbsnp.collect(),
+    //     ch_references_dir.collect(),
+    //     ch_sentieon_dir
+    // )
 
-    HARD_FILTERING(
-        GENOTYPING.out.vcf
-    )
+    // HARD_FILTERING(
+    //     GENOTYPING.out.vcf
+    // )
 
-    CAUSAL_DETECTION(
-        HARD_FILTERING.out.snp_vcf,
-        HARD_FILTERING.out.indel_vcf,
-        ch_references_dir.collect(),
-        ch_scripts_dir.collect(),
-        ch_causal_snv_vcf,
-        ch_causal_indel_vcf
-    )
+    // CAUSAL_DETECTION(
+    //     HARD_FILTERING.out.snp_vcf,
+    //     HARD_FILTERING.out.indel_vcf,
+    //     ch_references_dir.collect(),
+    //     ch_scripts_dir.collect(),
+    //     ch_causal_snv_vcf,
+    //     ch_causal_indel_vcf
+    // )
 
     // For SV
     // BREAKDANCER(
@@ -94,12 +94,12 @@ workflow NGS4THAL {
     //     ch_known_SV_bed
     // )
 
-    // CONIFER(
-    //     ch_filtered_bam,
-    //     ch_cf_scripts_dir.collect(),
-    //     ch_probe_bed,
-    //     ch_known_SV_bed
-    // )
+    CONIFER(
+        ch_filtered_bam,
+        ch_cf_scripts_dir.collect(),
+        ch_probe_bed,
+        ch_known_SV_bed
+    )
 
 
 }
