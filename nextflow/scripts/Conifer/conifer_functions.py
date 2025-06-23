@@ -313,7 +313,6 @@ class rpkm_reader:
 			table_rows = probe_tbl.get_where_list('(start >= 0) & (stop <= 1000000000)')
 		
 		data_tbl  = self.h5file.root._f_get_child("chr" + str(chromosome))
-		print("chr" + str(chromosome))
 		
 		if sampleList == None:
 			num_samples = data_tbl._v_nchildren
@@ -341,6 +340,8 @@ class rpkm_reader:
 		d.samples = out_sample_list
 		d.exons = probe_tbl.read_coordinates(table_rows)
 		
+		print(d)
+
 		return d
 	
 	def getSampleList(self,cohort=None,sex=None,ethnicity=None,custom=None):
