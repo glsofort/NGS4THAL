@@ -406,8 +406,16 @@ def CF_call(args):
 	
 	callfile_f.write('\t'.join(header) + "\n")
 	for call in all_calls:
-		print ("%s\t%s\t%d\t%d\t%s" % (call["sampleID"], call["chromosome"], call["start"], call["stop"], call["state"]))
-		callfile_f.write("%s\t%s\t%d\t%d\t%s\n" % (call["sampleID"], call["chromosome"], call["start"], call["stop"], call["state"]))
+		# Clean up sampleID to remove bytes prefix
+		sample_id = call["sampleID"]
+		if isinstance(sample_id, bytes):
+			sample_id = sample_id.decode('utf-8')
+		else:
+			sample_id = str(sample_id)
+		
+		print ("%s\t%s\t%d\t%d\t%s" % (sample_id, call["chromosome"], call["start"], call["stop"], call["state"]))
+		callfile_f.write("%s\t%s\t%d\t%d\t%s\n" % (sample_id, call["chromosome"], call["start"], call["stop"], call["state"]))
+
 	
 	sys.exit(0)
 
