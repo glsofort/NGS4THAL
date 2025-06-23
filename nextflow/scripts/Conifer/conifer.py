@@ -357,6 +357,10 @@ def CF_call(args):
 			sample_data = data.getSample([sample]).flatten()
 			#sample_raw_data = raw_data.getSample([sample]).flatten()
 
+			print(f"Sample {sample} data range: {np.min(sample_data):.3f} to {np.max(sample_data):.3f}")
+			print(f"Values > threshold ({args.threshold}): {np.sum(sample_data >= args.threshold)}")
+			print(f"Values < -threshold ({-args.threshold}): {np.sum(sample_data <= -args.threshold)}")
+
 			print ("sample")
 			print (sample)
 			
