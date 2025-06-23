@@ -348,6 +348,8 @@ def CF_call(args):
 		
 		mean= np.mean(data.rpkm,axis=1)
 		sd =  np.std(data.rpkm,axis=1)
+
+		print(data)
 		
 		for sample in r.getSampleList():
 			sample_data = data.getSample([sample]).flatten()
