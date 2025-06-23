@@ -145,9 +145,9 @@ def plotGenomicCoords(plt, rpkm_data,fontsize=10,rotation=0):
 	import operator
 	import locale
 	exon_set = rpkm_data.exons
-	genomic_coords = np.array(map(operator.itemgetter("start"),exon_set))
+	genomic_coords = np.array(list(map(operator.itemgetter("start"),exon_set)))
 	
-	ticks = range(0,len(exon_set),len(exon_set)/5)
+	ticks = range(0,len(exon_set),len(exon_set)//5)
 	
 	ticks[-1] -= 1 # the last tick is going to be off the chart, so we estimate it as the second to last genomic coord.
 	labels = [locale.format("%d", genomic_coords[i], grouping=True) for i in ticks if i < len(genomic_coords)]
@@ -170,14 +170,14 @@ def getbkpoints(mask):
 		bkpoints = np.hstack([0,bkpoints])
 	if mask[-1] == 1:
 		bkpoints = np.hstack([bkpoints,len(mask)])
-	return bkpoints.reshape(len(bkpoints)/2,2)
+	return bkpoints.reshape(len(bkpoints)//2,2)
 
 def mergeCalls(calls):
 	if len(calls) == 0:
 		return []
 	
 	out_calls = []
-	calls=np.array(calls)[np.argsort(np.array(map(operator.itemgetter("start"),calls),dtype=np.int))]
+	calls=np.array(calls)[np.argsort(np.array(list(map(operator.itemgetter("start"),calls)),dtype=int))]
 	pstart = calls[0]["start"]
 	pstop = calls[0]["stop"]
 	for d in calls:
@@ -210,7 +210,7 @@ class rpkm_data:
 			weightings = weightings/weightings.sum()
 			smoothed_data = np.array([])
 			for row in self.rpkm.transpose():
-				smoothed = np.convolve(row, weightings)[(window-1)/2:-((window-1)/2)]
+				smoothed = np.convolve(row, weightings)[(window-1)//2:-((window-1)//2)]
 				if len(smoothed_data) == 0:
 					smoothed_data  = smoothed
 				else:
@@ -261,7 +261,7 @@ class rpkm_reader:
 	def getExonValuesByExons(self, chromosome, start_exon, stop_exon, sampleList=None,genotype=False):
 		
 		probe_tbl = self.h5file.root.probes._f_get_child("probes_chr" + str(chromosome))
-		#table_rows = probe_tbl.getWhereList('(start >= %d) & (stop <= %d)' % (start,stop))
+		#table_rows = probe_tbl.get_where_list('(start >= %d) & (stop <= %d)' % (start,stop))
 		start_exon = max(start_exon,0)
 		stop_exon = min(stop_exon, probe_tbl.nrows)
 		#print start_exon, stop_exon
@@ -280,7 +280,7 @@ class rpkm_reader:
 		out_sample_list = []
 		cnt = 0
 		for sample_tbl in samples:
-			d = sample_tbl.readCoordinates(table_rows,field="rpkm")
+			d = sample_tbl.read_coordinates(table_rows,field="rpkm")
 			data[cnt,:] = d
 			cnt +=1
 			out_sample_list.append(sample_tbl.title)
@@ -292,16 +292,16 @@ class rpkm_reader:
 		else: #return all data points
 			d.rpkm = data.transpose()
 		d.samples = out_sample_list
-		d.exons = probe_tbl.readCoordinates(table_rows)
+		d.exons = probe_tbl.read_coordinates(table_rows)
 		
 		return d
 	
 	def getExonValuesByRegion(self, chromosome, start=None, stop=None, sampleList=None,genotype=False):
 		probe_tbl = self.h5file.root.probes._f_get_child("probes_chr" + str(chromosome))
 		if (start is not None) and (stop is not None):
-			table_rows = probe_tbl.getWhereList('(start >= %d) & (stop <= %d)' % (start,stop))
+			table_rows = probe_tbl.get_where_list('(start >= %d) & (stop <= %d)' % (start,stop))
 		else:
-			table_rows = probe_tbl.getWhereList('(start >= 0) & (stop <= 1000000000)')
+			table_rows = probe_tbl.get_where_list('(start >= 0) & (stop <= 1000000000)')
 		
 		data_tbl  = self.h5file.root._f_get_child("chr" + str(chromosome))
 		
@@ -317,7 +317,7 @@ class rpkm_reader:
 		out_sample_list = []
 		cnt = 0
 		for sample_tbl in samples:
-			d = sample_tbl.readCoordinates(table_rows,field="rpkm")
+			d = sample_tbl.read_coordinates(table_rows,field="rpkm")
 			data[cnt,:] = d
 			cnt +=1
 			out_sample_list.append(sample_tbl.title)
@@ -329,7 +329,7 @@ class rpkm_reader:
 		else: #return all data points
 			d.rpkm = data.transpose()
 		d.samples = out_sample_list
-		d.exons = probe_tbl.readCoordinates(table_rows)
+		d.exons = probe_tbl.read_coordinates(table_rows)
 		
 		return d
 	
@@ -358,7 +358,7 @@ class rpkm_reader:
 			readWhereStr = readWhereStr.strip(" &") # remove leading or trailing characters
 		if readWhereStr != "":
 			#print readWhereStr
-			sampleIDs = self.sample_table.readWhere(readWhereStr,field='sampleID')
+			sampleIDs = self.sample_table.read_where(readWhereStr,field='sampleID')
 		else:
 			sampleIDs = self.sample_table.read(field='sampleID')
 		
@@ -366,5 +366,5 @@ class rpkm_reader:
 	
 	def getExonIDs(self, chromosome, start, stop):
 		probe_tbl = self.h5file.root.probes._f_get_child("probes_chr" + str(chromosome))
-		exons = probe_tbl.getWhereList('(start >= %d) & (stop <= %d)' % (start,stop))
+		exons = probe_tbl.get_where_list('(start >= %d) & (stop <= %d)' % (start,stop))
 		return exons
