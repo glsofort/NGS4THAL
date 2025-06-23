@@ -165,11 +165,20 @@ def plotRawData(axis, rpkm_data, color='r',linewidth=0.7):
 	axis.plot(positions,logr,color=color,marker=None,linewidth=1)
 
 def getbkpoints(mask):
+	# Add check for empty mask
+	if len(mask) == 0:
+		return np.array([]).reshape(0, 2)
+	
 	bkpoints = np.nonzero(np.logical_xor(mask[0:-1],mask[1:]))[0]+1
 	if mask[0] == 1:
 		bkpoints = np.hstack([0,bkpoints])
 	if mask[-1] == 1:
 		bkpoints = np.hstack([bkpoints,len(mask)])
+	
+	# Also add check for empty bkpoints to avoid division by zero
+	if len(bkpoints) == 0:
+		return np.array([]).reshape(0, 2)
+	
 	return bkpoints.reshape(len(bkpoints)//2,2)
 
 def mergeCalls(calls):
