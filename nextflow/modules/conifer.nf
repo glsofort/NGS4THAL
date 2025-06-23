@@ -76,7 +76,7 @@ process CONIFER {
         --output ${cf_cnv_call_03}
 
     # Find causal varaints
-    awk 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}'  > ${cf_del_pre}
+    # awk 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}'  > ${cf_del_pre}
     awk '{
         if(\$4-\$3>500 && \$5=="del"){
             print \$2"\t"\$3"\t"\$4"\t"\$4-\$3"\tNA\t"\$1;
@@ -90,7 +90,7 @@ process CONIFER {
     sort -k6 ${cf_del_causal_pre_mid} > ${output_del_causal_pre}
 
     # For duplication
-    awk 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}'  > ${cf_dup_pre}
+    # awk 'BEGIN{print "chr\tpos1\tpos2\tsize\tDeletion_with_support_Reads\tsample_name"}'  > ${cf_dup_pre}
     awk '{
         if(\$4-\$3>2500  && \$5=="dup"){
             print \$2"\t"\$3"\t"\$4"\t"\$4-\$3"\tNA\t"\$1;

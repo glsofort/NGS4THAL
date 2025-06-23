@@ -412,9 +412,11 @@ def CF_call(args):
 			sample_id = sample_id.decode('utf-8')
 		else:
 			sample_id = str(sample_id)
+
+		chromosome = call["chromosome"].replace("chr", "")
 		
-		print ("%s\t%s\t%d\t%d\t%s" % (sample_id, call["chromosome"], call["start"], call["stop"], call["state"]))
-		callfile_f.write("%s\t%s\t%d\t%d\t%s\n" % (sample_id, call["chromosome"], call["start"], call["stop"], call["state"]))
+		print ("%s\t%s\t%d\t%d\t%s" % (sample_id, chromosome, call["start"], call["stop"], call["state"]))
+		callfile_f.write("%s\t%s\t%d\t%d\t%s\n" % (sample_id, chromosome, call["start"], call["stop"], call["state"]))
 
 	
 	sys.exit(0)
