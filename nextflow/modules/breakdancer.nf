@@ -27,8 +27,6 @@ process BREAKDANCER {
     def bd_del_pre              = "BreakDancer_Deletion.pre"
     def bd_del_pre_sorted       = "BreakDancer_Deletion.sorted.pre"
     def bd_causal_mid_bed       = "BD_Causal.mid.bed"
-    def bd_causal_mid_pre       = "BD_Causal_mid.pre"
-
 
     bd_pre                      = "BD.pre"
     output                      = "BD_Causal.pre"
@@ -78,8 +76,6 @@ process BREAKDANCER {
     # If deletion is found, continue processing
     bedtools closest -a ${bd_del_pre_sorted} -b ${known_SV_bed} -d | awk 'BEGIN{FS=OFS="\t"}{if(\$14=="0"){print}}' > ${bd_causal_mid_bed}
 
-    python3 ${find_mrange_bd_script} --bed ${bd_causal_mid_bed} -minbed ${bd_causal_mid_pre}
-
-    sort -k6 ${bd_causal_mid_pre} > ${output}
+    python3 ${find_mrange_bd_script} --bed ${bd_causal_mid_bed} -minbed ${output}
     """
 }
