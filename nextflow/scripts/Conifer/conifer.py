@@ -154,7 +154,7 @@ def CF_analyze(args):
 			print ("[ERROR] This chromosome has fewer informative probes than there are samples in the analysis! There are probably no mappings on this chromosome. Please remove these probes from the probes.txt file")
 			sys.exit(0)
 		
-		probeIDs = np.array(list(map(operator.itemgetter("probeID"),chr_probes)))[probe_mask]
+		probeIDs = np.array(map(operator.itemgetter("probeID"),chr_probes))[probe_mask]
 		probe_starts = np.array(map(operator.itemgetter("start"),chr_probes))[probe_mask]
 		probe_stops = np.array(map(operator.itemgetter("stop"),chr_probes))[probe_mask]	
 		gene_names =  np.array(map(operator.itemgetter("name"),chr_probes))[probe_mask]	
@@ -431,7 +431,7 @@ def CF_plot(args):
 			try:
 				color, sampleID = sample.split(":")
 			except:
-				color =coloriter.__next__()
+				color =coloriter.next()
 				sampleID = sample
 			
 			ax.plot(data.getSample([sampleID]), linewidth = 1, c=color, label = sampleID)
