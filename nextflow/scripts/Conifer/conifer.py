@@ -352,15 +352,22 @@ def CF_call(args):
 		print("mean", mean)
 		print("sd", sd)
 		
-		print("Sample list")
-		print(r.getSampleList())
 
 		for sample in r.getSampleList():
 			sample_data = data.getSample([sample]).flatten()
 			#sample_raw_data = raw_data.getSample([sample]).flatten()
+
+			print ("sample")
+			print (sample)
 			
 			dup_mask = sample_data >= args.threshold
 			del_mask = sample_data <= -1*args.threshold
+
+			print ("dup_mask")
+			print (dup_mask)
+
+			print ("del_mask")
+			print (del_mask)
 			
 			dup_bkpoints = cf.getbkpoints(dup_mask) #returns exon coordinates for this chromosome (numpy array coords)
 			del_bkpoints = cf.getbkpoints(del_mask)
